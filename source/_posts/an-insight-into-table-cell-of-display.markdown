@@ -26,7 +26,7 @@ tags:
 
 从下图可以看出，所有浏览器都支持的很好嘛。
 
-![caniuse]({{site.imageurl}}/assets/images/2016/table-cell-caniuse.png)
+![caniuse](/assets/images/2016/table-cell-caniuse.png)
 
 ## 特性(Peculiarities)
 
@@ -87,7 +87,7 @@ table-cell的特征就是跟table的td表现是一毛一样的；
   </div>
 ```
 
-![image]({{site.imageurl}}/assets/images/2016/table-cell-two-cols.png)
+![image](/assets/images/2016/table-cell-two-cols.png)
 
 如果`左边的cell子元素只有img`，有两点需要提醒一下：
 
@@ -96,7 +96,7 @@ table-cell的特征就是跟table的td表现是一毛一样的；
 ```
  <div style="margin-top: 30px;">
     <div style="display: table-cell;height:150px;width:150px;background:red;">
-      <img src="{{site.imageurl}}/assets/images/samples/cat1.jpg" width="200px">
+      <img src="/assets/images/samples/cat1.jpg" width="200px">
     </div>
     <div style="display: table-cell;height:150px;width:150px;background:blue;">
       blue box
@@ -104,7 +104,7 @@ table-cell的特征就是跟table的td表现是一毛一样的；
   </div>
 ```
 
-![image]({{site.imageurl}}/assets/images/2016/table-cell-two-cols-1.1.png)
+![image](/assets/images/2016/table-cell-two-cols-1.1.png)
 
 咦？怎么cell变高了，基本上快2倍了，对于inline-block容器也存在类似情况：
 
@@ -117,7 +117,7 @@ table-cell的特征就是跟table的td表现是一毛一样的；
 </div>
 ```
 
-![image]({{site.imageurl}}/assets/images/2016/table-cell-two-cols-1.2.png)
+![image](/assets/images/2016/table-cell-two-cols-1.2.png)
 
 这两种情况涉及到inline-block元素的vertical-align的默认值，其默认baseline，
 那么baseline是什么？有三种情况：
@@ -136,7 +136,7 @@ table-cell的特征就是跟table的td表现是一毛一样的；
 // img的max-width不为100%，并且第二个table-cell设置宽度很大比如100%或者9999999px
 <div style="margin-top: 30px;">
     <div style="display: table-cell;height:150px;width:150px;background:red;">
-      <img src="{{site.imageurl}}/assets/images/samples/cat1.jpg" width="200px">
+      <img src="/assets/images/samples/cat1.jpg" width="200px">
     </div>
     <div style="display:table-cell; height:150px; width:150px; background:blue;">
       blue box
@@ -144,13 +144,13 @@ table-cell的特征就是跟table的td表现是一毛一样的；
   </div>
 ```
 
-![image]({{site.imageurl}}/assets/images/2016/table-cell-two-cols-1.1.png)
+![image](/assets/images/2016/table-cell-two-cols-1.1.png)
 
 ```
 // img的max-width为100%，并且第二个table-cell设置宽度很大比如100%或者9999999px
 <div>
   <div style="display: table-cell;background:red;">
-    <img style="max-width:100%" src="{{site.imageurl}}/assets/images/samples/cat1.jpg" width="100px">
+    <img style="max-width:100%" src="/assets/images/samples/cat1.jpg" width="100px">
   </div>
   <div style="display: table-cell;height:150px;width:100%;background:blue;">
     blue box
@@ -158,7 +158,7 @@ table-cell的特征就是跟table的td表现是一毛一样的；
 </div>
 ```
 
-![image]({{site.imageurl}}/assets/images/2016/table-cell-two-cols-2.2.png)
+![image](/assets/images/2016/table-cell-two-cols-2.2.png)
 
 聪明的你一眼就看到第二种情况第一个table-cell没了宽度，其主要原因是**max-width**的优先级**高于**width，所以此时的width无效了，所以img就被右侧的cell
 挤压没了，顺便说一句，**min-width**的优先级比**max-width**高。
