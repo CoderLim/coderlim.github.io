@@ -1,0 +1,746 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,CSS,step-start,step-end,timing-function," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这篇博客是面向于对css动画有一定了解的童鞋，主要是区分step-start和step-end.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="animation-timing-function 之 steps()">
+<meta property="og:url" content="http://gengliming.com/2016/11/09/css3-timing-function-steps/index.html">
+<meta property="og:site_name" content="茗空间">
+<meta property="og:description" content="这篇博客是面向于对css动画有一定了解的童鞋，主要是区分step-start和step-end.">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/steps(2,start.png">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/steps(4,end.png">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/step-start.png">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/step-end.png">
+<meta property="og:updated_time" content="2017-01-18T20:13:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="animation-timing-function 之 steps()">
+<meta name="twitter:description" content="这篇博客是面向于对css动画有一定了解的童鞋，主要是区分step-start和step-end.">
+<meta name="twitter:image" content="http://gengliming.com/assets/images/2016/steps(2,start.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gengliming.com/2016/11/09/css3-timing-function-steps/"/>
+
+
+
+
+
+  <title> animation-timing-function 之 steps() | 茗空间 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">茗空间</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">嗨，我是耿笠茗，一名来自中国的Coder。现居北京，就职于海航易建科技。正在努提高中...</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://gengliming.com/2016/11/09/css3-timing-function-steps/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="CoderLim">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="茗空间">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="茗空间" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                animation-timing-function 之 steps()
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-09T19:30:00+08:00">
+                2016-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+              <div class="post-description">
+                  这篇博客是面向于对css动画有一定了解的童鞋，主要是区分step-start和step-end.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="随便聊聊"><a href="#随便聊聊" class="headerlink" title="随便聊聊"></a>随便聊聊</h2><p>不知道最近三星怎么这么喜欢炸弹，不仅手机能爆炸，洗衣机也会爆炸，尼玛，产品设计师难不成是研究炸弹的；NBA开赛了，可惜湖人没了科比的身影，<br>在我还没成为球迷之前他已经不在了，很湿伤心，还是听听音乐吧。说到听歌，给大家推荐一首神曲《我的滑板鞋》，看到这歌名，我想你们内心是崩溃<br>的，听到<code>原唱</code>你们肯定骂了不止一百遍逗比碧池，心细的同学可能注意到我提到了原唱，没错原唱是不堪入耳，但是经过华晨宇的改编已经脱胎换骨了，<br>“一步两步，一步两步”，steps, step-start, step-end。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>CSS:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.cube &#123;</div><div class="line">  height: 150px;</div><div class="line">  width: 200px;</div><div class="line">&#125;</div><div class="line">.start &#123;</div><div class="line">  border: 20px solid red;</div><div class="line">  animation: anima 4s infinite step-start;</div><div class="line">&#125;</div><div class="line">.end &#123;</div><div class="line">  border: 20px solid green;</div><div class="line">  animation: anima 4s infinite step-end;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes anima &#123;</div><div class="line">  25% &#123;</div><div class="line">    border-top-color: transparent;</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    border-right-color: transparent;</div><div class="line">  &#125;</div><div class="line">  75% &#123;</div><div class="line">    border-bottom-color: transparent;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>本来想把剂夫图发上来，但是录制的时间点总是不对，防止误导就不贴图了，移步<a href="https://jsfiddle.net/CoderGLM/7gz452ad/" target="_blank" rel="external">这里</a>。</p>
+<h2 id="steps"><a href="#steps" class="headerlink" title="steps"></a>steps</h2><p>steps(number_of_step, direction)定义了一个step函数,将输出分成等距的步。还是用我擅长的方言说吧，比如steps(2,start)(先忽略<em>start</em>)，<br>意思是把时间分成2等分，每等个时间段持续一种不变的状态，没有中间的过渡，可以从下面两个图看出来。</p>
+<ul>
+<li><em>number_of_step</em>：正数，代表组成stepping函数的等距步的多少，即步数；</li>
+<li><em>direction</em>：表示stepping函数是<a href="http://en.wikipedia.org/wiki/Left-continuous#Directional_and_semi-continuity" title="left- or right-continuous" target="_blank" rel="external">左持续还是右持续</a>；<ul>
+<li><em>start</em>：表示左持续函数，因此当动画开始时，第一步就会发生，什么意思呢？也就是动画刚开始的一刹那，第一步就发生了，第一步刚发生就结束了，开始了吗？已经结束了，昙花一现；</li>
+<li><em>end</em>：表示右持续，因此当动画结束时，最后一步就会发生，这又TTMM什么意思呢？意思是动画结束的一刹那是最后一步的开始，也是最后一步的结束，</li>
+</ul>
+</li>
+</ul>
+<p>什么是左持续和右持续呢？请看下面坐标里的大头针，针尖方向的左就是左持续，相反就是右持续，^~^!</p>
+<p><a href="https://jsfiddle.net/CoderGLM/e6hd40c8/" title="steps(4)示例" target="_blank" rel="external">狠狠的点击这里</a>，这是个steps(4)的示例。</p>
+<p>steps(2,start):<br><img src="/assets/images/2016/steps(2,start.png" alt="steps(2,start)"></p>
+<p>steps(4,end):<br><img src="/assets/images/2016/steps(4,end.png" alt="steps(4,end)"></p>
+<p>step-start和step-end是两种不同状态，从大头针图来看，step-start是刚开始就病入膏肓了，没针只有头，接下来病好了，又能伸出来了^_^;<br>step-end是刚开始身体杠杠的，到最后不行了，为什么不行了，什么不行了？我也不知道。</p>
+<h2 id="step-start"><a href="#step-start" class="headerlink" title="step-start"></a>step-start</h2><p><img src="/assets/images/2016/step-start.png" alt="steps-start"></p>
+<p>这个关键字与steps(1, start)是一样的。使用这个时间函数，动画立即跳到最终的状态，呆在那个位置直到动画结束。阿西吧，什么鬼，没关系<br>等我把另一个关键词拿出来后对比一下就清楚了。</p>
+<h2 id="step-end"><a href="#step-end" class="headerlink" title="step-end"></a>step-end</h2><p><img src="/assets/images/2016/step-end.png" alt="step-end"></p>
+<p>这个与steps(1,end)等同。在用这个函数时，动画呆在初始状态直到结束。阿西吧吧，什么意思？似懂非懂，<br>大头针图来看，step-start和step-end都是只有一根针，凸^<em>^凸，卖个萌＝</em>＝!</p>
+<p>接下来用我的姿势来告诉你这两个是怎么表现的吧，还是拿最上面的示例来说话。</p>
+<p>来看看这段4s动画的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@keyframes anima &#123;</div><div class="line">  25% &#123;</div><div class="line">    border-top-color: transparent;</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    border-right-color: transparent;</div><div class="line">  &#125;</div><div class="line">  75% &#123;</div><div class="line">    border-bottom-color: transparent;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>虽然step-XXX都是一步到位（numbers_of_step＝1），也就是只有一个大头针，但是有四帧动画，<br>实际上主要还是用到了方向这个参数。</p>
+<p>从数学归纳法的角度来看看规律：</p>
+<p>step-start：</p>
+<ol>
+<li>1s，动画的最终状态是25%，50%，75%样式叠加，所以只显示左边框；</li>
+<li>2s是50%，75%样式的叠加，所以只隐藏了右和下边框；</li>
+<li>3s是只有75%的样式，所以只隐藏了下边框；</li>
+<li>4s是这几种样式都不存在的状态，所以四边都显示了。</li>
+</ol>
+<p>step-end：也许这种更符合我们的直觉</p>
+<ol>
+<li>1s，动画的最初状态是四边都显示；</li>
+<li>2s，只有25%的样式，也就是只隐藏顶部；</li>
+<li>3s是25%和50%样式的叠加，所以隐藏了顶部和右边；</li>
+<li>4s是25%，50%，75%样式的叠加，所以只有左边显示。</li>
+</ol>
+<p>是不是不太形象生动，那好，我来从方向的角度来解释：</p>
+<p>step-start是一根大头针从帧动画的100%直接插入到0%：</p>
+<ol>
+<li>1s，帧动画0%，在针尖的位置，所以从针尖到针冒的样式就是当前的样式，正如数学归纳法说的是25%，50%，75%样式的叠加；</li>
+<li>2s，帧动画25%，在距离针尖1/4的位置，从此位置到针冒的样式就是50%，75%叠加；<br>…<br>依此类推吧，不多废话了，同理step-end是大头针从帧动画的0%直捣黄龙到100%，样式的叠加也是某个位置到针冒样式的叠加，<br>慢慢体会吧。</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>balabala最重要的就是最后的对比啊，对比才能更好的理解，不然根据文档实在是有点头疼，如果哪位大虾有更好的理解角度，欢迎留言。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1.<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/single-transition-timing-function" target="_blank" rel="external">single-transition-timing-function</a><br></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/step-start/" rel="tag"># step-start</a>
+          
+            <a href="/tags/step-end/" rel="tag"># step-end</a>
+          
+            <a href="/tags/timing-function/" rel="tag"># timing-function</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/01/regex-some-important-concept/" rel="next" title="正则表达式 ?:，?=，?!">
+                <i class="fa fa-chevron-left"></i> 正则表达式 ?:，?=，?!
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/25/setTimeout-setImmediate-nextTick/" rel="prev" title="setTimeout VS setImmediate">
+                setTimeout VS setImmediate <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CoderLim" />
+          <p class="site-author-name" itemprop="name">CoderLim</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#随便聊聊"><span class="nav-number">1.</span> <span class="nav-text">随便聊聊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steps"><span class="nav-number">3.</span> <span class="nav-text">steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-start"><span class="nav-number">4.</span> <span class="nav-text">step-start</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-end"><span class="nav-number">5.</span> <span class="nav-text">step-end</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CoderLim</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
