@@ -69,10 +69,10 @@ steps(number_of_step, direction)定义了一个step函数,将输出分成等距�
 [狠狠的点击这里][2]，这是个steps(4)的示例。
 
 steps\(2,start\):
-![steps(2,start)]({{ site.imageurl }}/assets/images/2016/steps(2,start).png)
+![steps(2,start)](/assets/images/2016/steps(2,start.png)
 
 steps\(4,end\):
-![steps(4,end)]({{ site.imageurl }}/assets/images/2016/steps(4,end).png)
+![steps(4,end)](/assets/images/2016/steps(4,end.png)
 
 
 
@@ -81,14 +81,14 @@ step-end是刚开始身体杠杠的，到最后不行了，为什么不行了，
 
 ## step-start
 
-![steps-start]({{ site.imageurl }}/assets/images/2016/step-start.png)
+![steps-start](/assets/images/2016/step-start.png)
 
 这个关键字与steps(1, start)是一样的。使用这个时间函数，动画立即跳到最终的状态，呆在那个位置直到动画结束。阿西吧，什么鬼，没关系
 等我把另一个关键词拿出来后对比一下就清楚了。
 
 ## step-end
 
-![step-end]({{ site.imageurl }}/assets/images/2016/step-end.png)
+![step-end](/assets/images/2016/step-end.png)
 
 这个与steps(1,end)等同。在用这个函数时，动画呆在初始状态直到结束。阿西吧吧，什么意思？似懂非懂，
 大头针图来看，step-start和step-end都是只有一根针，凸^_^凸，卖个萌＝_＝!

@@ -14,7 +14,7 @@ tags:
 
 ## 创建类
 
-![创建类]({{site.imageurl}}/assets/images/2016/javascript-class-creation-inheritage1.png)<br/>
+![创建类](/assets/images/2016/javascript-class-creation-inheritage1.png)<br/>
 1.**工厂模式**：解决了创建多个相似对象的问题，但却没有解决对象识别的问题（即怎样知道一个对象的类型）
 
 ```
@@ -176,7 +176,7 @@ friend.sayName();
 
 ## 类的继承
 
-![类继承]({{site.imageurl}}/assets/images/2016/javascript-class-creation-inheritage2.png)<br/>
+![类继承](/assets/images/2016/javascript-class-creation-inheritage2.png)<br/>
 
 1.**原型链**：实现继承的主要方法。
 
@@ -204,7 +204,7 @@ var instance = new SubType();
 alert(instance.getSuperValue());
 ```
 
-![关系图]({{site.imageurl}}/assets/images/2016/javascript-class-creation-inheritage3.png)<br/>
+![关系图](/assets/images/2016/javascript-class-creation-inheritage3.png)<br/>
 
 这个模式有两个问题：（1）共享属性；（2）创建子类型实例时，不能向超类的构造函数中传递参数。或者说没有办法在不影响所有对象实例的情况下，给超类的构造函数换地参数。鉴于有这两个问题，实践中很少会单独使用原型链。
 

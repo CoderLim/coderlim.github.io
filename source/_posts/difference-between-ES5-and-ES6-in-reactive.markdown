@@ -14,7 +14,7 @@ tags:
 ---
 
 
-![image]({{ site.imageurl }}/assets/images/2016/difference-es5-es6-in-react.png) <br/>
+![image](/assets/images/2016/difference-es5-es6-in-react.png) <br/>
 
 放一张毫无意义的图。
 

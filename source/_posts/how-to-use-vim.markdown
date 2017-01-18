@@ -15,12 +15,12 @@ tags:
 
 ## 先来看看我的vim
 
-![我的vim]({{site.imageurl}}/assets/images/2016/how-to-use-vim-my-vim.png)
+![我的vim](/assets/images/2016/how-to-use-vim-my-vim.png)
 
 
 ## vim键盘图
 
-![vim键盘图]({{site.imageurl}}/assets/images/2016/how-to-use-vim1.png)
+![vim键盘图](/assets/images/2016/how-to-use-vim1.png)
 
 ## vim的安装
 

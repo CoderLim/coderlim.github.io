@@ -206,7 +206,7 @@ CSS选择器的性能：#id > class > 标签选择器 > 相邻选择器(+) > 兄
 
 关于语法的优化，直接上张图：
 
-![image]({{ site.imageurl }}/assets/images/2016/javascript-syntax-optimize.png)
+![image](/assets/images/2016/javascript-syntax-optimize.png)
 
 ### 1、把Scripts放到底部
 
