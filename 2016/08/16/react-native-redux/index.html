@@ -1,0 +1,904 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react-native,ReactNative,redux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="ReactNative也出了一年多了，facebook还在忙碌的修复各种问题，截止目前github上还有900个issue未解决。我对RN还是寄托了很大的期望。ReactNative是基于状态的组件化框架，随着RN(ReactNative)项目变大，state变得不可预测，不可预测的意思是state到处修改和使用导致维护与debug很困难，所以就要有个管理state的方式，这种方式就是Redux。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在ReactNative中使用redux">
+<meta property="og:url" content="http://gengliming.com/2016/08/16/react-native-redux/index.html">
+<meta property="og:site_name" content="茗空间">
+<meta property="og:description" content="ReactNative也出了一年多了，facebook还在忙碌的修复各种问题，截止目前github上还有900个issue未解决。我对RN还是寄托了很大的期望。ReactNative是基于状态的组件化框架，随着RN(ReactNative)项目变大，state变得不可预测，不可预测的意思是state到处修改和使用导致维护与debug很困难，所以就要有个管理state的方式，这种方式就是Redux。">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/wang-bao-qiang1.png">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/react-native-redux-scornful1.jpg">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/react-native-redux-maoli.jpeg">
+<meta property="og:updated_time" content="2017-01-18T20:09:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何在ReactNative中使用redux">
+<meta name="twitter:description" content="ReactNative也出了一年多了，facebook还在忙碌的修复各种问题，截止目前github上还有900个issue未解决。我对RN还是寄托了很大的期望。ReactNative是基于状态的组件化框架，随着RN(ReactNative)项目变大，state变得不可预测，不可预测的意思是state到处修改和使用导致维护与debug很困难，所以就要有个管理state的方式，这种方式就是Redux。">
+<meta name="twitter:image" content="http://gengliming.com/assets/images/2016/wang-bao-qiang1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gengliming.com/2016/08/16/react-native-redux/"/>
+
+
+
+
+
+  <title> 如何在ReactNative中使用redux | 茗空间 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-82479563-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">茗空间</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">嗨，我是耿笠茗，一名来自中国的Coder。现居北京，就职于海航易建科技。正在努提高中...</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://gengliming.com/2016/08/16/react-native-redux/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="CoderLim">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="茗空间">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="茗空间" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何在ReactNative中使用redux
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-16T19:54:00+08:00">
+                2016-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ReactNative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/08/16/react-native-redux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/16/react-native-redux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/16/react-native-redux/" class="leancloud_visitors" data-flag-title="如何在ReactNative中使用redux">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  ReactNative也出了一年多了，facebook还在忙碌的修复各种问题，截止目前github上还有900个issue未解决。我对RN还是寄托了很大的期望。ReactNative是基于状态的组件化框架，随着RN(ReactNative)项目变大，state变得不可预测，不可预测的意思是state到处修改和使用导致维护与debug很困难，所以就要有个管理state的方式，这种方式就是Redux。但注意一点Redux并不仅仅为ReactNative而生。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><br><br><br></p>
+<h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p><img src="/assets/images/2016/wang-bao-qiang1.png" alt="image"> <br><br>近日王宝强（本来是想用‘宝宝’来称呼，但是我为人高冷，还是用原名吧）的离婚闹得沸沸扬扬，热度是不是已经远远超过了里约奥运。无下限的网友各种恶搞，从‘潘金莲照顾武大郎’到‘宝宝捉奸’，只说一句：万能的网友捉奸视频有没有？刚看到王宝强的微博，只想说：唉，下贱的小娼妇，但是细想与我何干？毕竟我不知道谁是谁非，这里不做评判。</p>
+<h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><hr>
+<blockquote>
+<p>ReactNative也出了一年多了，facebook还在忙碌的修复各种问题，截止目前github上还有900个issue未解决。对于我而言对RN还是寄托了很大的期。<br>ReactNative是基于状态的组件化框架，随着RN项目变大，state变得不可预测，不可预测的意思是state到处修改和使用导致<br>维护与debug很困难，所以就要有个管理state的方式，<br>这种方式就是Redux。但注意一点Redux并不仅仅为RN而生。<br>Notice：本文更适合有RN基础的朋友，如果你学过reactjs也是可以的。</p>
+<p>下面解释一些重要概念，然后解析一个<a href="https://github.com/CoderGLM/react-native-redux-example/tree/master/Discolor" title="Discolor" target="_blank" rel="external">demo</a>。</p>
+</blockquote>
+<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><hr>
+<p>Redux是为javascript而生的可预测的状态容器，是<a href="http://facebook.github.io/flux/" target="_blank" rel="external">Flux</a>的进化。什么是Flux？没用过。为什么是可预测的？下面会解释。</p>
+<p>Redux由Action、Reducer、Storage三部分组成，先来看看官方代码（里面有中文的珠玑文字，不要一目十行，请慢慢体会）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">import &#123; createStore &#125; from &apos;redux&apos;</div><div class="line"></div><div class="line">/*</div><div class="line"> *</div><div class="line"> *  代码里没定义action，action类似于如下，仅仅是一个普通对象</div><div class="line"> *</div><div class="line"> *  但是要有**type**，因为reducer（下面马上就会提到）会根据type来更改state</div><div class="line"> *</div><div class="line"> */</div><div class="line">let action = &#123;</div><div class="line">  type: INCREMENT,</div><div class="line">  params: xxxx,</div><div class="line">&#125;;</div><div class="line">/**</div><div class="line"> * This is a reducer, a pure function with (state, action) =&gt; state signature.</div><div class="line"> * It describes how an action transforms the state into the next state.</div><div class="line"> *</div><div class="line"> * The shape of the state is up to you: it can be a primitive, an array, an object,</div><div class="line"> * or even an Immutable.js data structure. The only important part is that you should</div><div class="line"> * not mutate the state object, but return a new object if the state changes.</div><div class="line"> *</div><div class="line"> * In this example, we use a `switch` statement and strings, but you can use a helper that</div><div class="line"> * follows a different convention (such as function maps) if it makes sense for your</div><div class="line"> * project.</div><div class="line"> */</div><div class="line">/*</div><div class="line"> *</div><div class="line"> * 只有reducer才能更改state；</div><div class="line"> *</div><div class="line"> * 返回值为下一个状态，注意下一个state不是对当前状态修改后返回，而是返回了一个全新的state，</div><div class="line"> * 也就是说redux中的state是不可改变的，如果想改变状态那就返回一个全新的state</div><div class="line"> *   </div><div class="line"> */</div><div class="line">function reducer(state = 0, action) &#123;</div><div class="line">  switch (action.type) &#123;</div><div class="line">  case &apos;INCREMENT&apos;:</div><div class="line">    return state + 1</div><div class="line">  case &apos;DECREMENT&apos;:</div><div class="line">    return state - 1</div><div class="line">  default:</div><div class="line">    return state</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Create a Redux store holding the state of your app.</div><div class="line">// Its API is &#123; subscribe, dispatch, getState &#125;.</div><div class="line">/*</div><div class="line"> * store就用来存放state的容器</div><div class="line"> * createStore(reducer) 参数是reducer，把reducer注入到store，这样store最终就成为保存和修改state的容器了</div><div class="line"> * 什么是注入？其实就是把reducer赋值给store中的某个变量了，为什么这么做可以google关键字：**设计模式 依赖注入 控制反转**</div><div class="line"> */</div><div class="line">let store = createStore(reducer)</div><div class="line"></div><div class="line">// You can use subscribe() to update the UI in response to state changes.</div><div class="line">// Normally you&apos;d use a view binding library (e.g. React Redux) rather than subscribe() directly.</div><div class="line">// However it can also be handy to persist the current state in the localStorage.</div><div class="line">/*</div><div class="line"> *</div><div class="line"> *  订阅：其参数是一个回调函数，当state改变时就会触发这个回调函数</div><div class="line"> *  订阅有个好处（如上英文注释），可以很方便的持久化当前state到localStorage（即将state保存到localStorage）</div><div class="line"> *</div><div class="line"> */</div><div class="line">store.subscribe(() =&gt;</div><div class="line">  console.log(store.getState())</div><div class="line">)</div><div class="line"></div><div class="line">// The only way to mutate the internal state is to dispatch an action.</div><div class="line">// The actions can be serialized, logged or stored and later replayed.</div><div class="line">/*</div><div class="line"> *</div><div class="line"> * dispatch: 参数为action，store会将此action作为参数执行reducer（上面已经通过createStorage传入到store了）</div><div class="line"> *</div><div class="line"> */</div><div class="line">store.dispatch(&#123; type: &apos;INCREMENT&apos; &#125;)</div><div class="line">// 1</div><div class="line">store.dispatch(&#123; type: &apos;INCREMENT&apos; &#125;)</div><div class="line">// 2</div><div class="line">store.dispatch(&#123; type: &apos;DECREMENT&apos; &#125;)</div><div class="line">// 1</div></pre></td></tr></table></figure>
+<p><strong>数据流</strong>动的方向时：action-&gt;store-&gt;store里的reducer(用来改变state)-&gt;更新UI（因为RN是基于状态机的，所以state更改后自动render）<br><br></p>
+<p>这也很容理解上面的<strong>可预测</strong>是什么意思，数据流保证了单向流动，store集中管理state，除了reducer没有任何方法修改state，还有重要的一点是state是不可改变的，因为reducer返回的下一个状态state2是基于上一个状态state1的，而不是修改state1然后返回state1.</p>
+<p>看完之后有的人酱紫：<br><img src="/assets/images/2016/react-native-redux-scornful1.jpg" alt="image"> <br><br>还有的人酱紫：<br><img src="/assets/images/2016/react-native-redux-maoli.jpeg" alt="image"> <br><br>如果不理解，多看两遍，下面会带着大家一起写个demo。</p>
+<blockquote>
+<p>先来欣赏一段扎克伯格的文字<br>People often ask me what advice I’d give someone who wants to start their own company.<br>My answer is that every good company that I can think of started with someone caring about changing something, not someone deciding &gt; to start a company. Instead of trying to build a company, focus on the change you want to see in the world and just keep pushing<br>forward.<br>有人问我这段字有什么含义，我说：没含义，放松一下😌</p>
+</blockquote>
+<h1 id="Redux-Thunk"><a href="#Redux-Thunk" class="headerlink" title="Redux Thunk"></a>Redux Thunk</h1><p><a href="https://github.com/gaearon/redux-thunk" title="什么是Thunk？" target="_blank" rel="external">github地址在这里</a><br><br><strong>什么是thunk？</strong> thunk是一个包含了表达式（expression）的函数，用来延迟表达式（expression）的执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 这里1+2是立即执行的</div><div class="line">// calculation of 1 + 2 is immediate</div><div class="line">// x === 3</div><div class="line">let x = 1 + 2;</div><div class="line"></div><div class="line">// 这里1+2不会立即执行，只有在调foo时才会执行</div><div class="line">// calculation of 1 + 2 is delayed</div><div class="line">// foo can be called later to perform the calculation</div><div class="line">// foo is a thunk!</div><div class="line">let foo = () =&gt; 1 + 2;</div></pre></td></tr></table></figure>
+<p>现在一些框架的<em>readme</em>在写其用处时一般用<strong>Motivation</strong>这个词，动机纯不纯的动机。<br><br><br><br><br><strong>Redux Thunk middleware</strong>允许你的action creator返回一个function而不是action。<br><br>Thunk 可以用来延迟dispatch一个action，或者只有满足某个特定条件时才dispatch。<br><br>inner function把store的dispatch和getState作为参数<br><br>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// action creator 返回一个function去执行异步dispatch</div><div class="line">const INCREMENT_COUNTER = &apos;INCREMENT_COUNTER&apos;;</div><div class="line"></div><div class="line">function increment() &#123;</div><div class="line">  return &#123;</div><div class="line">    type: INCREMENT_COUNTER</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function incrementAsync() &#123;</div><div class="line">  return dispatch =&gt; &#123;</div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">      // Yay! Can invoke sync or async actions with `dispatch`</div><div class="line">      dispatch(increment());</div><div class="line">    &#125;, 1000);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// action creator返回一个function去有条件的执行dispatch</div><div class="line">function incrementIfOdd() &#123;</div><div class="line">  return (dispatch, getState) =&gt; &#123;</div><div class="line">    const &#123; counter &#125; = getState();</div><div class="line"></div><div class="line">    if (counter % 2 === 0) &#123;</div><div class="line">      return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    dispatch(increment());</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Demo-gt-Discolor"><a href="#Demo-gt-Discolor" class="headerlink" title="Demo-&gt;Discolor"></a>Demo-&gt;Discolor</h1><p><a href="https://github.com/CoderGLM/react-native-redux-example/tree/master/Discolor" target="_blank" rel="external">进这里，点击右上角的star</a><br>实现的功能是，页面上有两个按钮，点击按钮页面背景变色，第一个是变成红色，第二个是变成绿色<br><br>在此demo的同级目录下还有个Counters，这个示例稍微复杂一点。<br><br>再往下看前，请打开你已经down下来的demo<br></p>
+<p>先来看看文件目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">-app</div><div class="line">---actions</div><div class="line">-----actionTypes.js : action类型</div><div class="line">-----discolorActions.js : action creators</div><div class="line"></div><div class="line">---components</div><div class="line">-----discolor.js : 纯ReactNative自定义组件</div><div class="line"></div><div class="line">---containers</div><div class="line">-----app.js ：加入Provider</div><div class="line">-----discolorApp.js ：定义app</div><div class="line"></div><div class="line">---reducers</div><div class="line">-----discolor.js : reducer之一</div><div class="line">-----index.js : export所有reducer，当然这里只有一个discolor</div><div class="line"></div><div class="line">-index.ios.js</div><div class="line">-index.android.js</div></pre></td></tr></table></figure>
+<p><strong>安装依赖</strong>此处为必要的安装，如果缺少，会有red screen提示的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install --save redux</div><div class="line">npm install --save react-redux</div></pre></td></tr></table></figure>
+<p><strong>actions/actionTypes.js</strong>定义了两种类型：变成红色 和 变成绿色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export const CHANGE2RED = &apos;CHANGE2RED&apos;;</div><div class="line">export const CHANGE2GREEN = &apos;CHANGE2GREEN&apos;;</div></pre></td></tr></table></figure>
+<p><strong>actions/discolorActions.js</strong>定义了两个action creator，如果你是从头看的，<br><br>现在应该能看懂了，如果不懂，那就从头看吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import * as types from &apos;./actionTypes&apos;;</div><div class="line"></div><div class="line">export function change2red() &#123;</div><div class="line">  return &#123;</div><div class="line">    type: types.CHANGE2RED,</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export function change2green() &#123;</div><div class="line">  return &#123;</div><div class="line">    type: types.CHANGE2GREEN,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>components/discolor.js</strong>是RN的自定义控件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123;</div><div class="line">  StyleSheet,</div><div class="line">  View,</div><div class="line">  Text,</div><div class="line">  TouchableHighlight,</div><div class="line">&#125; from &apos;react-native&apos;;</div><div class="line"></div><div class="line">export default class Discolor extends Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super (props);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    // 这些属性是从DiscolorApp传过来的</div><div class="line">    const &#123; color, change2red, change2green&#125; = this.props;</div><div class="line"></div><div class="line">    return (</div><div class="line">      &lt;View style=&#123;[styles.container, &#123;</div><div class="line">          backgroundColor: color,</div><div class="line">      &#125;]&#125;&gt;</div><div class="line">        &lt;TouchableHighlight onPress=&#123;change2red&#125; style=&#123;styles.button&#125;&gt;</div><div class="line">          &lt;Text&gt;change2red&lt;/Text&gt;</div><div class="line">        &lt;/TouchableHighlight&gt;</div><div class="line">        &lt;TouchableHighlight onPress=&#123;change2green&#125; style=&#123;styles.button&#125;&gt;</div><div class="line">          &lt;Text&gt;change2green&lt;/Text&gt;</div><div class="line">        &lt;/TouchableHighlight&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: 1,</div><div class="line">    justifyContent: &apos;center&apos;,</div><div class="line">    alignItems: &apos;center&apos;,</div><div class="line">    backgroundColor: &apos;purple&apos;,</div><div class="line">  &#125;,</div><div class="line">  button: &#123;</div><div class="line">    width: 120,</div><div class="line">    height: 40,</div><div class="line">    backgroundColor: &apos;lightgray&apos;,</div><div class="line">    alignItems: &apos;center&apos;,</div><div class="line">    justifyContent: &apos;center&apos;,</div><div class="line">    margin: 3,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>containers/discolorApp.js</strong>：已经加入了必要的注释，不懂的留言吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos; // javascript的严格模式</div><div class="line"></div><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; bindActionCreators &#125; from &apos;redux&apos;;</div><div class="line">import Discolor from &apos;../components/discolor&apos;;</div><div class="line">import * as discolorActions from &apos;../actions/discolorActions&apos;;</div><div class="line">import &#123; connect &#125; from &apos;react-redux&apos;;</div><div class="line"></div><div class="line">class DiscolorApp extends Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super(props);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    const &#123; state, actions &#125; = this.props;</div><div class="line">    return (</div><div class="line">      &lt;Discolor</div><div class="line">        color=&#123;state.color&#125;</div><div class="line">        &#123;...actions&#125; /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> *</div><div class="line"> * connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])</div><div class="line"> *</div><div class="line"> * 这里只说第一个参数，其他的参考：http://cn.redux.js.org/docs/react-redux/api.html</div><div class="line"> *</div><div class="line"> * [mapStateToProps(state, [ownProps]): stateProps] (Function): 如果定义该参数，组件将会监听 Redux store 的变化。</div><div class="line"> * 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。</div><div class="line"> * 该回调函数必须返回一个纯对象，这个对象会与组件的 props 合并。如果你省略了这个参数，你的组件将不会监听 Redux store。</div><div class="line"> * 如果指定了该回调函数中的第二个参数 ownProps，则该参数的值为传递到组件的 props，而且只要组件接收到新的 props，mapStateToProps 也会被调用。</div><div class="line"> *</div><div class="line"> * 所以这里state: state.discolor中的discolor其实就是reducers/discolor.js</div><div class="line"> * 一旦Redux store变化这个回调函数就会执行discolor，discolor就会返回新的state，</div><div class="line"> * 为什么discolor会返回新的state，因为它是reducer</div><div class="line"> */</div><div class="line">export default connect(state =&gt; (&#123;</div><div class="line">    state: state.discolor</div><div class="line">  &#125;),</div><div class="line">  (dispatch) =&gt; (&#123;</div><div class="line">    /*</div><div class="line">     * 再来说下 bindActionCreators 的作用: 把 action creators 转成拥有同名 keys 的对象，但使用 dispatch 把每个 action creator 包围起来，这样可以直接调用它们。</div><div class="line">     * 什么意思呢？在这里的bindActionCreators返回值就是普通对象：</div><div class="line">     *   &#123;</div><div class="line">     *     change2red: dispatch(discolorActions.change2red),</div><div class="line">     *     change2green: dispatch(discolorActions.change2green),</div><div class="line">     *   &#125;</div><div class="line">     */</div><div class="line">    actions: bindActionCreators(discolorActions, dispatch),</div><div class="line">  &#125;)</div><div class="line">)(DiscolorApp);</div></pre></td></tr></table></figure>
+<p><strong>containers/app.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; createStore, applyMiddleware, combineReducers &#125; from &apos;redux&apos;;</div><div class="line">import &#123; Provider &#125; from &apos;react-redux&apos;;</div><div class="line">import thunk from &apos;redux-thunk&apos;;</div><div class="line"></div><div class="line">import * as reducers from &apos;../reducers&apos;;</div><div class="line">import DiscolorApp from &apos;./discolorApp&apos;;</div><div class="line"></div><div class="line">/*</div><div class="line"> *</div><div class="line"> *  通过使用applyMiddleware来允许使用thunk</div><div class="line"> *</div><div class="line"> */</div><div class="line">const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);</div><div class="line">/*</div><div class="line"> *</div><div class="line"> *  合并多个reducer</div><div class="line"> *</div><div class="line"> */</div><div class="line">const reducer = combineReducers(reducers);</div><div class="line">const store = createStoreWithMiddleware(reducer);</div><div class="line"></div><div class="line">export default class App extends Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">        &lt;DiscolorApp /&gt;</div><div class="line">      &lt;/Provider&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>reducers/discolor.js</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> *</div><div class="line"> *  项目里唯一的reducer</div><div class="line"> *</div><div class="line"> */</div><div class="line"></div><div class="line">import * as types from &apos;../actions/actionTypes&apos;;</div><div class="line"></div><div class="line">const initialState = &#123;</div><div class="line">  color: &apos;red&apos;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">export default function discolor(state = initialState, action = &#123;&#125;) &#123;</div><div class="line">  switch (action.type) &#123;</div><div class="line">    case types.CHANGE2RED:</div><div class="line">      return &#123;</div><div class="line">        ...state,</div><div class="line">        color: &apos;red&apos;,</div><div class="line">      &#125;;</div><div class="line">    case types.CHANGE2GREEN:</div><div class="line">      return &#123;</div><div class="line">        ...state,</div><div class="line">        color: &apos;green&apos;,</div><div class="line">      &#125;;</div><div class="line">    default:</div><div class="line">      return state;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>reducers/index.js</strong>：为了可以统一导出所有reducer，这里只有discolor<br><br>如何统一导出，在<em>containers/app.js</em>中是这么用的： <em>import </em> as reducers from ‘../reducers’;*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import discolor from &apos;./discolor&apos;;</div><div class="line"></div><div class="line">export &#123;</div><div class="line">  discolor,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>index.ios.js</strong>：代码与index.android.js相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos; // javascript严格模式</div><div class="line"></div><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123; AppRegistry &#125;  from &apos;react-native&apos;;</div><div class="line">import App from &apos;./app/containers/app&apos;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(&apos;ReactNativeReduxSimplest&apos;, () =&gt; App);</div></pre></td></tr></table></figure>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>以上就是关于ReactNative结合Redux的入门教程，希望可以帮助大家理清思路。我本着用最简单的方式表达最重要的信息的目的来撰写此文，在有些措辞不严谨或者表达不够准确的地方希望大家可以留言。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a href="http://redux.js.org/" target="_blank" rel="external">redux 英文版本</a>：如果你不喜欢请看参考2<br><br><a href="http://cn.redux.js.org/docs/basics/index.html" target="_blank" rel="external">redux 中文版本</a>：翻译版，系统讲解<br><br><a href="http://stackoverflow.com/questions/29722270/import-modules-from-files-in-directory" target="_blank" rel="external">stackoverflow问题</a>：ES6能否import一个目录（多个文件）<br><br><a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="external">Redux Thunk</a>: 什么是Thunk？<br><br><a href="https://github.com/alinz/example-react-native-redux" target="_blank" rel="external">example-react-native-redux</a> : demo参考了这个项目</p>
+</blockquote>
+<p> “ES6能否import一个目录（多个文件）”</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag"># react-native</a>
+          
+            <a href="/tags/ReactNative/" rel="tag"># ReactNative</a>
+          
+            <a href="/tags/redux/" rel="tag"># redux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/01/make-personal-blog-via-jekyll/" rel="next" title="基于jekyll＋github-pages的个人博客">
+                <i class="fa fa-chevron-left"></i> 基于jekyll＋github-pages的个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/08/how-to-use-vim/" rel="prev" title="总结vim的使用方法">
+                总结vim的使用方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/16/react-native-redux/"
+           data-title="如何在ReactNative中使用redux" data-url="http://gengliming.com/2016/08/16/react-native-redux/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CoderLim" />
+          <p class="site-author-name" itemprop="name">CoderLim</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/coderlim" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://twitter.com/coderlim" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/6592713/coderlim" target="_blank" title="StackOverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  StackOverflow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#碎碎念"><span class="nav-number">1.</span> <span class="nav-text">碎碎念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导语"><span class="nav-number">2.</span> <span class="nav-text">导语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">3.</span> <span class="nav-text">Redux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux-Thunk"><span class="nav-number">4.</span> <span class="nav-text">Redux Thunk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Demo-gt-Discolor"><span class="nav-number">5.</span> <span class="nav-text">Demo->Discolor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CoderLim</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coderlim"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yoIsfXbcPd9CaI7dElXxRGTr-gzGzoHsz", "C6EPBupyikjJYvXlpkWnI23y");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
