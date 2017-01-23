@@ -1,7 +1,7 @@
 ---
 layout: post
 title: javascript 类的创建与继承
-date: 2014.07.13 12:30.000000000 +09:00
+date: 2014.07.13 12:30:00
 categories: 
   - 前端
   - javascript 

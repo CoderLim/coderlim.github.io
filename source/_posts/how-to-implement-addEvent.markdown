@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 如何正确实现addEvent
-date: 2015.07.06 15:32.000000000 +09:00
+date: 2015.07.06 15:32:00
 categories: 
   - 前端
   - javascript 

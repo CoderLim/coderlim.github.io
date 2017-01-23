@@ -1,7 +1,7 @@
 ---
 layout: post
 title: this绑定的对象到底指的是哪个？
-date: 2015.08.09 09:30.000000000 +09:00
+date: 2015.08.09 09:30:23
 categories: 
   - 前端
   - javascript 

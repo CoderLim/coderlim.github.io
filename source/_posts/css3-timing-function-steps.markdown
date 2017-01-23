@@ -1,7 +1,7 @@
 ---
 layout: post
 title: animation-timing-function 之 steps()
-date: 2016.11.09 20:30.000000000 +09:00
+date: 2016.11.09 20:30:00
 categories: 
   - 前端
   - CSS

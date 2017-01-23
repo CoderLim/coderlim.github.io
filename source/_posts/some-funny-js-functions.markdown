@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 几个有趣的javascript函数
-date: 2015.06.05 14:02.000000000 +09:00
+date: 2015.06.05 14:02:00
 categories: 
   - 前端
   - javascript 

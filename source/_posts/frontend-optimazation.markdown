@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 前端性能优化
-date: 2015.10.01 15:32.000000000 +09:00
+date: 2015.10.01 15:32:00
 category: 前端
 description: 性能对于程序来说至关重要。本文是对雅虎军规的翻译。前段性能优化从Content、Server、Cookie、CSS、Javascript、Images、Mobile几方面总结。
 tags: 前端;性能优化

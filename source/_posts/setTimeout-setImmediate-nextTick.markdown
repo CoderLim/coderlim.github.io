@@ -1,7 +1,7 @@
 ---
 layout: post
 title: setTimeout VS setImmediate
-date: 2016.11.25 13:10.000000000 +09:00
+date: 2016.11.25 13:10:00
 categories: 
   - 前端
   - javascript 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CSS视觉格式化模型 
-date: 2014.09.02 12:30.000000000 +09:00
+date: 2014/09/02 12:30:00
 categories: 
   - 前端
   - CSS

@@ -1,11 +1,11 @@
 ---
 layout: post
 title: 常见兼容性问题
-date: 2015.03.02 13:10.000000000 +09:00
+date: 2015.03.02 13:10:00
 categories: 
   - 前端
   - CSS
-description: 总结常见的兼容性问题
+description: 总结常见的兼容性问题，持续更新中。。。
 tags: 
   - 前端
   - 兼容性

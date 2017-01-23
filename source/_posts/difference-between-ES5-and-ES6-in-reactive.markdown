@@ -1,12 +1,11 @@
 ---
 layout: post
 title: React/ReactNative中ES5和ES6语法的区别
-date: 2016.02.23 12:50.000000000 +09:00
+date: 2016.02.23 12:50:00
 categories: 
   - 前端
   - javascript
-description: React/ReactNative中ES5与ES6的区别，我把这些需要注意的点放在了一个类定义上，实现了两个类。如果这种方式你们不喜欢，
-那就参考文末的**参考**吧。
+description: React/ReactNative中ES5与ES6的区别，我把这些需要注意的点放在了一个类定义上，实现了两个类。如果这种方式你们不喜欢，那就参考文末的**参考**吧。
 tags:
   - 前端
   - javascript

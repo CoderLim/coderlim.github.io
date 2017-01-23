@@ -1,9 +1,8 @@
 ---
 layout: post
 title: react-native入门
-date: 2016-01-13 23:32:54.000000000 +09:00
-description: 记录我学习RN很有价值的内容,代码学习可以参考ReactNativeLeaning(ES6版),最后附了一个sinaWebBo实际项目，虽说RN出来不久，坑多的不少
-据我实际开发感受，坑确实不少，当然也有框架的坑，最主要还是自己对框架熟练度不够，所以如果你的学习之路不够平坦也不要气馁，多敲代码少抱怨^_^.
+date: 2016.01.13 23:32:54
+description: 记录我学习RN很有价值的内容,代码学习可以参考ReactNativeLeaning(ES6版),最后附了一个sinaWebBo实际项目，虽说RN出来不久，坑多的不少，据我实际开发感受，坑确实不少，当然也有框架的坑，最主要还是自己对框架熟练度不够，所以如果你的学习之路不够平坦也不要气馁，多敲代码少抱怨^_^.
 category: ReactNative
 tags: 
   - react-native
