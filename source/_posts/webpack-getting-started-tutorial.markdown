@@ -3,7 +3,7 @@ layout: post
 title: webpack入门教程
 date: 2016.01.01 00:00.000000000 +00:00
 category: 其它 
-description: webpack的使用方法
+description: 介绍了webpack的使用方法，注意是基本用法，是对官网教程的翻译，如果你没用过webpack可以来参考这篇文章。
 tags: 
   - 前端
   - webpack
