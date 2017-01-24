@@ -12,7 +12,8 @@ tags:
 ---
 
 > 总结常见的兼容性问题
-> 内容不够丰富，等碰到之后还会添加
+> 持续更新中。。。
+
 
 ## CSS
 
@@ -47,7 +48,7 @@ tags:
 	}
 ```  
 
-- 超链接访问后hover样式就不现实了，被点击访问后的超链接不再具有hover和active；按照L-V-H-A：a:link{} a:visited{} a:hover{} a:active{} 顺序设置可解决；
+- 超链接访问后hover样式就不显示了，被点击访问后的超链接不再具有hover和active；按照L-V-H-A：a:link{} a:visited{} a:hover{} a:active{} 顺序设置可解决；
 
 - 同一BFC相邻box的margin会折叠：详细信息请[猛戳这里](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)
 
@@ -58,7 +59,7 @@ tags:
 - [IE6 select穿透问题(div 定位无法遮盖select)! ](http://blog.csdn.net/yangzhihello/article/details/41207175)
 - [IE6 1px的div](http://www.cnblogs.com/lancee/archive/2011/08/19/2145448.html)
 
-- [ IE6 IE7 IE8(Q) 负边距导致元素溢出 hasLayout 容器时显示异常](http://w3help.org/zh-cn/causes/RB1001)
+- [IE6 IE7 IE8(Q) 负边距导致元素溢出 hasLayout 容器时显示异常](http://w3help.org/zh-cn/causes/RB1001)
 
 - text-align:center的子元素在非IE下不居中
 
@@ -165,6 +166,8 @@ ul {
 ## JS
 
 更多关于dom操作的兼容性请参考《js高级程序设计(第三版)》第10章
+
+- safari9.0.3中，Date('2015-10-10')返回`Invalid Date`，因为它不认识'-'，可以换成Date('2015/10/10');
 
 - 以前有篇文章：[跨浏览器的EventUtil&&StyleUtil](http://www.jianshu.com/p/f1d5e1e5fa5f)
 
