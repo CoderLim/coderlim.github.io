@@ -5,7 +5,7 @@ date: 2015.03.02 13:10:00
 categories: 
   - 前端
   - CSS
-description: 总结常见的兼容性问题，持续更新中。。。
+description: 总结常见的兼容性问题，包括CSS和javascript相关tip，持续更新中。。。如果有什么疑问或纠错，欢迎留言。
 tags: 
   - 前端
   - 兼容性
