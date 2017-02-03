@@ -130,11 +130,11 @@ console.log('正常执行');
 
 ## 总结
 
-实际上setTimeout最初出现是在浏览器端，毕竟node是后来出现的。我有一个小建议，在浏览器端推荐使用setTimeout，而在node端使用Immediate。
-还有一种[说法][1]提到了，setTimeout与Immediate不是同一队列，所以会出现不可预测的先后执行。
+实际上setTimeout最初出现是在浏览器端，毕竟node是后来出现的。我有一个小建议，在浏览器端推荐使用setTimeout，
+而在node端使用process.nextTick、Immediate。还有一种[说法][1]提到了，setTimeout与Immediate不是同一队列，所以会出现不可预测的先后执行。
 有何不顺眼的地方欢迎指正。
 
-[1]: https://github.com/nodejs/node-v0.x-archive/issues/6034 说到setTimeout与setImmediate不是同一队列
+[1]:https://github.com/nodejs/node-v0.x-archive/issues/6034 "说到setTimeout与setImmediate不是同一队列"
 
 ## 参考
 
