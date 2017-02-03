@@ -1,6 +1,6 @@
 ---
 layout: post
-title: setTimeout VS setImmediate
+title: setTimeout && setImmediate && nextTick
 date: 2016.11.25 13:10:00
 categories: 
   - 前端
@@ -13,10 +13,9 @@ tags:
   - nextTick
 ---
 
-## 前沿
+## 前言 
 
 每次写文章都想在前面提提事实，今天想说的是：*******，如果你看到的是星号，那很抱歉，“福利”被和谐了，你可以更换浏览器试试。
-
 
 ## api介绍
 
@@ -76,6 +75,58 @@ fs.readFile('nodetest.js', function (err, data) {
   })
 })
 ```
+
+===================2017.02.04更新====================
+
+这三种函数存放回调函数的姿势是不同的：
+
+- setTimeout：其回调存放在红黑树中，查找效率O(lg(n));
+- nextTick：其回调存放在数组中，查找效率O(1);
+- setImmediate：其回调存放在链表中；
+
+所以，对于立即执行的方法setTimeout(cb, 0)比nextTick效率低。
+
+对于下面这种情况：
+
+```
+process.nextTick(function () {
+  console.log('nextTick');
+});
+setImmediate(function () {
+  console.log('Immediate');
+});
+console.log('正常');
+// 结果：nextTick、Immediate、正常
+```
+这是由于事件循环不同观察者（观察者可以理解为一系列回调函数，每次事件循环都会去问观察者有没有回调函数）是有优先级的，
+优先级由高到低依次为：idle观察者、io观察者、check观察者。
+
+还有一点需要说明，刚刚上面提到了process.nextTick的回调保存在数组中，setImmediate的回调保存在链表中，
+process.nextTick在每次事件循环中会把数组中的所有回调执行，而setImmediate每次只执行一个，来看个例子：
+
+```
+process.nextTick(function () {
+  console.log('nextTick1');
+});
+process.nextTick(function () {
+  console.log('nextTick2');
+});
+setImmediate(function () {
+  console.log('setImmediate1');
+  // 进入下次循环
+  process.nextTick(function () {
+    console.log('强势进入');
+  });
+});
+setImmediate(function () {
+  console.log('setImmediate2');
+});
+console.log('正常执行');
+// 结果：nextTick1、nextTick2、setImmediate1、强势进入、setImmedate2
+```
+
+从执行结果可以看出，当第一个setImmediate执行完，并没有紧接着执行第二个，而是进入了下一次循环。这种设计是为了
+保证每轮魂环能够快速执行结束，防止CPU占用过多而阻塞后续IO调用的情况。
 
 ## 总结
 
