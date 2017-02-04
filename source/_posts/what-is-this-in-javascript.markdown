@@ -1,11 +1,11 @@
 ---
 layout: post
-title: this绑定的对象到底指的是哪个？
+title: 深入了解this
 date: 2015.08.09 09:30:23
 categories: 
   - 前端
   - javascript 
-description: 全面解析this关键字，什么是this？ this绑定的对象到底指的是哪个？
+description: 相信接触js一段时间的童鞋们经常对this感到迷惑，今天我以老师的姿势来给你们讲讲js中的this。本文全面解析this关键字，什么是this？ this绑定的对象到底指的是哪个？并通过多个实例来深入分析。
 tags: 
   - 前端
   - javascript
