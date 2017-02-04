@@ -52,7 +52,7 @@ CSS:
 
 ```
 
-本来想把剂夫图发上来，但是录制的时间点总是不对，防止误导就不贴图了，移步[这里](https://jsfiddle.net/CoderGLM/7gz452ad/)。
+本来想把剂夫图发上来，但是录制的时间点总是不对，防止误导就不贴图了，移步[这里](https://jsfiddle.net/CoderLim/7gz452ad/)。
 
 ## steps
 
@@ -154,4 +154,4 @@ balabala最重要的就是最后的对比啊，对比才能更好的理解，不
 
 
 [1]: http://en.wikipedia.org/wiki/Left-continuous#Directional_and_semi-continuity "left- or right-continuous"
-[2]: https://jsfiddle.net/CoderGLM/e6hd40c8/ "steps(4)示例"
+[2]: https://jsfiddle.net/CoderLim/e6hd40c8/ "steps(4)示例"

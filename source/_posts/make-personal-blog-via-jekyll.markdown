@@ -99,7 +99,7 @@ tags:
 [4]: http://blog.csdn.net/zaijianluoye110 "我的CSDN博客"
 [5]: http://www.jianshu.com/users/6e62f1bcb77a/latest_articles "我的简书"
 [6]: http://jekyll.bootcss.com/ "jekyll cn"
-[7]: https://github.com/CoderGLM/jekyll-based-blog "jekyll-based-blog"
+[7]: https://github.com/CoderLim/jekyll-based-blog "jekyll-based-blog"
 [8]: http://sspai.com/25137 "markdown"
 [9]: https://github.com/ "github"
 [10]: https://www.google.com/analytics/ "google 统计"

@@ -193,7 +193,7 @@ inner function把store的dispatch和getState作为参数<br/>
 ```
 
 # Demo->Discolor
-[进这里，点击右上角的star](https://github.com/CoderGLM/react-native-redux-example/tree/master/Discolor)
+[进这里，点击右上角的star](https://github.com/CoderLim/react-native-redux-example/tree/master/Discolor)
 实现的功能是，页面上有两个按钮，点击按钮页面背景变色，第一个是变成红色，第二个是变成绿色<br/>
 在此demo的同级目录下还有个Counters，这个示例稍微复杂一点。<br/>
 再往下看前，请打开你已经down下来的demo<br/>
@@ -477,4 +477,4 @@ inner function把store的dispatch和getState作为参数<br/>
  "ES6能否import一个目录（多个文件）"
 [4]: https://github.com/gaearon/redux-thunk "什么是Thunk？"
 [5]: https://github.com/alinz/example-react-native-redux "example-react-native-redux，demo参考了这个项目"
-[6]: https://github.com/CoderGLM/react-native-redux-example/tree/master/Discolor "Discolor"
+[6]: https://github.com/CoderLim/react-native-redux-example/tree/master/Discolor "Discolor"
