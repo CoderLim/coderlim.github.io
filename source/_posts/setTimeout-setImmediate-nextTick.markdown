@@ -5,8 +5,7 @@ date: 2016.11.25 13:10:00
 categories: 
   - 前端
   - javascript 
-description: 每次写文章都想在前面提提~~事实~~时事，今天想说的是：*******，如果你看到的是星号，那很抱歉，“福利”被和谐了，你可以更换浏览器试试。本文对setTimeout、
-setImmediate、process.nextTick的区别做了简单阐述，如有疑问，请留言。
+description: 每次写文章都想在前面提提~~事实~~时事，今天想说的是：*******，如果你看到的是星号，那很抱歉，“福利”被和谐了，你可以更换浏览器试试。本文对setTimeout、setImmediate、process.nextTick的区别做了简单阐述，如有疑问，请留言。
 tags: 
   - node
   - setImmediate
