@@ -210,6 +210,9 @@ CSS选择器的性能：#id > class > 标签选择器 > 相邻选择器(+) > 兄
 
 ![image](/assets/images/2016/javascript-syntax-optimize.png)
 
+这里需要说明的是位运算在js中效率很一般，它的处理类似java，但是java位运算处理的是整数，而js处理的数据都是
+double类型的，所以要先转化成整数，才能执行位运算，并且js转化的整数是32位的。
+
 ### 1、把Scripts放到底部
 
 因为放到上面会阻塞页面加载。
