@@ -3,8 +3,10 @@ layout: post
 title: 前端性能优化
 date: 2015.10.01 15:32:00
 category: 前端
-description: 性能对于程序来说至关重要。本文是对雅虎军规的翻译。前段性能优化从Content、Server、Cookie、CSS、Javascript、Images、Mobile几方面总结。
-tags: 前端;性能优化
+description: 本文从Content、Server、Cookie、CSS、Javascript、Images、Mobile几方面做了简单介绍，主要内容来自雅虎军规和一部分工作中遇到的问题。性能对于程序来说至关重要，性能的好坏就像青春少女与老气横秋的老太婆，哈。
+tags:
+  - 前端
+  - 性能优化
 ---
 
 ## 导语:
