@@ -6,7 +6,8 @@ categories:
   - 前端
   - javascript 
 description: 小函数蕴含着大学问：函数节流之水龙头与弹簧、尾递归优化
-tags: 前端;
+tags: 
+  - 前端;
   - javascript
   - throttle
   - bounce
