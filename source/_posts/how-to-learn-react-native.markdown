@@ -36,7 +36,7 @@ react是基于组件开发的，但是组件是由控件组成的。
 
 ## 5、看看官方的Demo
 
-github地址[在这里](https://github.com/facebook/react-native)，在examples文件夹里有几个很简单的demo，对于熟练编码还是有价值的，不妨跟着敲一遍，不过都是es5实现的，其中movies的es6实现[在这里](https://github.com/CoderGLM/ReactNativeLeaning/tree/master/3.1FacebookMovies)（不过不完全）。
+github地址[在这里](https://github.com/facebook/react-native)，在examples文件夹里有几个很简单的demo，对于熟练编码还是有价值的，不妨跟着敲一遍，不过都是es5实现的，其中movies的es6实现[在这里](https://github.com/CoderLim/ReactNativeLeaning/tree/master/3.1FacebookMovies)（不过不完全）。
 
 ### 5.1 如何运行官方的Demo呢？我用运行UIExplorer举例
 
@@ -82,5 +82,5 @@ ps：手机和电脑要用数据线连接；手机和电脑要连到相同的wif
 4. com.android.builder.testing.api.DeviceException: No connected devices!：找工具栏的AVD Manager，下载模拟器
 
 
-[1]:https://github.com/CoderGLM/ReactNativeLeaning "ReactNativeLeaning"
-[2]:https://github.com/CoderGLM/react-native-image-browser "react-native-image-browser"
+[1]:https://github.com/CoderLim/ReactNativeLeaning "ReactNativeLeaning"
+[2]:https://github.com/CoderLim/react-native-image-browser "react-native-image-browser"

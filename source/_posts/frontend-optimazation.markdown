@@ -3,8 +3,10 @@ layout: post
 title: 前端性能优化
 date: 2015.10.01 15:32:00
 category: 前端
-description: 性能对于程序来说至关重要。本文是对雅虎军规的翻译。前段性能优化从Content、Server、Cookie、CSS、Javascript、Images、Mobile几方面总结。
-tags: 前端;性能优化
+description: 本文从Content、Server、Cookie、CSS、Javascript、Images、Mobile几方面做了简单介绍，主要内容来自雅虎军规和一部分工作中遇到的问题。性能对于程序来说至关重要，性能的好坏就像青春少女与老气横秋的老太婆，哈。
+tags:
+  - 前端
+  - 性能优化
 ---
 
 ## 导语:
@@ -207,6 +209,9 @@ CSS选择器的性能：#id > class > 标签选择器 > 相邻选择器(+) > 兄
 关于语法的优化，直接上张图：
 
 ![image](/assets/images/2016/javascript-syntax-optimize.png)
+
+这里需要说明的是位运算在js中效率很一般，它的处理类似java，但是java位运算处理的是整数，而js处理的数据都是
+double类型的，所以要先转化成整数，才能执行位运算，并且js转化的整数是32位的。
 
 ### 1、把Scripts放到底部
 

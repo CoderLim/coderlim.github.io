@@ -6,7 +6,9 @@ categories:
   - 前端
   - javascript 
 description: 如何正确实现addEvent？
-tags: 前端;addEvent;
+tags: 
+  - 前端
+  - javascript
 ---
 
 > 如何正确实现addEvent？
