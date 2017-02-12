@@ -1,7 +1,7 @@
 ---
 title: lazyman的两种实现方式
 date: 2017-02-12 08:58:03
-description: 最近在网上看到有部分人在面试（比如[1月面试记）的时候被问到了LazyMan，而且网友也有不同的编码，于是乎我也写了两个demo以供参考。
+description: 最近在网上看到有部分人在面试（比如[1月面试记）的时候被问到了LazyMan，而且网友也有不同的实现方式。这里我用两种方式实现了lazyman，以供参考，如有更好的方法，欢迎留言。
 categories: 
   - 前端
   - javascript
