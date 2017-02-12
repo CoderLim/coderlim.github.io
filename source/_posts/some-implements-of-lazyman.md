@@ -1,5 +1,5 @@
 ---
-title: some-implements-of-lazyman
+title: lazyman的两种实现方式
 date: 2017-02-12 08:58:03
 categories: 
   - 前端
