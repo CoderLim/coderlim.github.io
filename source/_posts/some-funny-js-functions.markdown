@@ -41,26 +41,25 @@ var throttle = function(fn, timeout) {
 ```
 var throttle = function(fn, timeout, delay) {
     var timer = null,
-    last = new Date().getTimes();
-
+        last = null;
     return function() {
-      var curr = new Date().getTimes(),
-          context = this,
-          args = arguments;
-
-      if (curr - last >= timeout) {
-        clearTimeout(timer);
-        timer = null;
-        last = curr;
-        fn.apply(context, args);
-      } else {
-        timer = setTimeout(function() {
-                  fn.apply(this, arguments);
-                }, delay);
-      }
+        var curr = Date.now(),
+            context = this,
+            args = arguments;
+        if (!last) last = Date.now();
+        if (curr - last >= timeout) {
+            clearTimeout(timer);
+            timer = null;
+            last = curr;
+            fn.apply(context, args);
+        } else {
+            timer && clearTimeout(timer);
+            timer = setTimeout(function() {
+                fn.apply(this, arguments);
+            }, delay);
+        }
     };
 };
-// 上面这一串代码居然需要我手动缩紧，也是醉了
 ```
 
 - Debounce：bounce是反弹的意思，debouce就是不让弹，就像弹簧一样，你一直按着它，直到放手它才能弹起来；这种思想拿到节流来说就是：如果你一直滚动，那函数就一直不响应，直到你不滚动我才执行：
