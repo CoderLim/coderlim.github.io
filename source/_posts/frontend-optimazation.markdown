@@ -11,10 +11,7 @@ tags:
 
 ## 导语:
 
-> 性能对于程序来说至关重要。本文主要内容是对[文章](https://developer.yahoo.com/performance/rules.html)的翻译，再加上对平常遇到的优化tip，
-> 从<a href="#content">Content</a>、<a href="#server">Server</a>、<a href="#cookie">Cookie</a>、
-> <a href="#css">CSS</a>、<a href="#javascript">Javascript</a>、<a href="#image">Images</a>、<a href="#mobile">Mobile</a>几方面做了个简单的阐述。
-> 对于看到标题就知道什么意思的就不翻译了，^_^ 
+> 性能对于程序来说至关重要。本文主要内容是对[文章](https://developer.yahoo.com/performance/rules.html)的翻译，再加上对平常遇到的优化tip，从<a href="#content">Content</a>、<a href="#server">Server</a>、<a href="#cookie">Cookie</a>、<a href="#css">CSS</a>、<a href="#javascript">Javascript</a>、<a href="#image">Images</a>、<a href="#mobile">Mobile</a>几方面做了个简单的阐述。对于看到标题就知道什么意思的就不翻译了，^_^ 
 
 这里有篇文章，介绍的点很多：[点击进入](http://www.jianshu.com/p/be5aea4a222f)
 
@@ -28,8 +25,9 @@ tags:
 
 - 合并文件：将所有脚本文件合并成一个脚本文件，同样把所有样式表合并成一个；
 - CSS Sprites：这是一种比较好的方法。合并你的背景图片，并且使用css的background-image和background-position属性展示需要的图片部分。
+- base64图片
 - 图片映射：不推荐，想了解[猛戳这里](https://www.w3.org/TR/html401/struct/objects.html#h-13.6)；
-- 行内图片：使用[data:URL scheme](http://tools.ietf.org/html/rfc2397)把图片数据嵌入到实际页面。这种方式还没被所有主流浏览器支持。
+- 行内图片：使用[data:URL scheme](http://tools.ietf.org/html/rfc2397)把图片数据嵌入到实际页面。这种方式还没被所有主流浏览器支持;
 
 ### <a name="content-2">2、减少DNS查询</a>
 
@@ -93,8 +91,7 @@ Alias 或者 mod_rewrite，或者DirectorySlash指令修复。
 
 ### 7、减少DOM元素数量
 
-不用过多解释了吧，如果dom节点过多对于重绘和回流的开销都很大，比如一个p标签就搞定的文档，偏要这样搞：<div><div><p>haha</p></div></div>，
-这是强行增加浏览器的任务量啊。
+不用过多解释了吧，如果dom节点过多对于重绘和回流的开销都很大，比如一个p标签就搞定的文档，偏要这样搞：<div><div><p>haha</p></div></div>，这是强行增加浏览器的任务量啊。
 
 ### 8、跨域分离组件
 
@@ -108,14 +105,14 @@ Alias 或者 mod_rewrite，或者DirectorySlash指令修复。
 iframe允许html文档嵌入到父文档。理解iframe如何工作才能高效使用它。
 
 iframe pros(优点，网络用语):
-*(1) 对加载比较慢的第三方内容（比如广告）有帮助
-(2) 安全的沙箱
-(3) 并行下载脚本文件*
+* (1) 对加载比较慢的第三方内容（比如广告）有帮助
+* (2) 安全的沙箱
+* (3) 并行下载脚本文件*
 
 iframe cons(缺点):
-*(1) 即使是空页面也是有消耗的
-(2) 阻塞页面加载
-(3) 非语义的*
+* (1) 即使是空页面也是有消耗的
+* (2) 阻塞页面加载
+* (3) 非语义的*
 
 ### 10、避免404错误
 
@@ -176,8 +173,7 @@ Yahoo!Mail团队在使用XMLHttpRequest时发现：POST请求在浏览器中的�
 如果你的域名是www.example.org,你可以安排你的静态资源在static.example.org。但是，如果你已经设置cookie在顶级域名example.org而不是www.example.org，那么所有的请求到static.example.org的请求也会包括这些cookie。这种情况下，你就应该购买一个完整的新域名了，
 把你的静态组件放那里，并且保持这个域名是域名无关（cookie－free）的。
 
-静态资源放到cookie无关的域名还有另一个好处：一些代理拒绝缓存带着cookie请求的组件。与此相关的,如果你在考虑主页使用example.org域名还是使用www.example.org,应该考虑cookie的影响。删除www会让你只能把cookie写在*.example.org下，因此为了性能的原因最好使用www
-的子域名，并把cookie写在子域名下。
+静态资源放到cookie无关的域名还有另一个好处：一些代理拒绝缓存带着cookie请求的组件。与此相关的,如果你在考虑主页使用example.org域名还是使用www.example.org,应该考虑cookie的影响。删除www会让你只能把cookie写在*.example.org下，因此为了性能的原因最好使用www的子域名，并把cookie写在子域名下。
 
 ## <a name="css">CSS</a>
 
@@ -201,8 +197,7 @@ Yahoo!Mail团队在使用XMLHttpRequest时发现：POST请求在浏览器中的�
 
 请点击上面的链接。
 
-CSS选择器的性能：#id > class > 标签选择器 > 相邻选择器(+) > 兄弟选择器(~) > 子选择器（>）> 后代选择器（desendant） > *（通配符选择器） 
-              > 属性选择器(attr) > 伪类选择器（pesudo）
+CSS选择器的性能：#id > class > 标签选择器 > 相邻选择器(+) > 兄弟选择器(~) > 子选择器（>）> 后代选择器（desendant） > *（通配符选择器） > 属性选择器(attr) > 伪类选择器（pesudo）
 
 ## <a name="javascript">Javascript</a>
 
@@ -210,8 +205,7 @@ CSS选择器的性能：#id > class > 标签选择器 > 相邻选择器(+) > 兄
 
 ![image](/assets/images/2016/javascript-syntax-optimize.png)
 
-这里需要说明的是位运算在js中效率很一般，它的处理类似java，但是java位运算处理的是整数，而js处理的数据都是
-double类型的，所以要先转化成整数，才能执行位运算，并且js转化的整数是32位的。
+这里需要说明的是位运算在js中效率很一般，它的处理类似java，但是java位运算处理的是整数，而js处理的数据都是double类型的，所以要先转化成整数，才能执行位运算，并且js转化的整数是32位的。
 
 ### 1、把Scripts放到底部
 
@@ -245,7 +239,7 @@ double类型的，所以要先转化成整数，才能执行位运算，并且js
 
 ### 4、使favicon.ico变小且可缓存
 
-favicon.ico 是保存在服务器网站根目录的图片。它是一个必然的危害，因为即使你不关心它，浏览器仍然会请求它，因此最好不要产生404响应。而且因为在同一个服务器上，每次请求它cookie都会被发送。这个图片还会阻碍下载队列，比如在ie中，当你在onload中请求额外的组件时，favicon将会在额外组件之前下载。
+favicon.ico 是保存在服务器网站根目录的图片。它是一个必然的危害，因为即使你不关心它，浏览器仍然会请求它，因此最好不要产生404响应。而且因为在同一个服务器上，每次请求它cookie都会被发送。这个图片还会阻碍下载队列，比如在ie中，当你在onload中请求额外的组件时favicon将会在额外组件之前下载。
 
 因此减缓有favicon这个缺点应确保：
 
@@ -263,7 +257,6 @@ favicon.ico 是保存在服务器网站根目录的图片。它是一个必然�
 ## Browser
 
 ### 1、避免reflow：[Repaint 、Reflow 的基本认识和优化][2]
-
 
 ## 参考：
 
