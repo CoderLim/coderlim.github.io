@@ -18,9 +18,9 @@ tags:
 
 这种方式，每次都是往queue里添加执行函数，next函数用来决定什么时候调用下一个函数。
 
-```
+```js
 var LazyMan = function LazyMan (name) {
-    if (!this) return new LazyMan(name);
+    if (!(this instanceof LazyMan)) return new LazyMan(name);
     this.queue = [() => {
         console.log(`hello ${name}`);
         this.next();
@@ -71,9 +71,9 @@ LazyMan('glm').eat('apple').sleep(2).eat('banana').sleepFirst(3).eat('peach');
 
 ## Promise
 
-```
+```js
 var LazyMan = function LazyMan(name) {
-    if (!this) return new LazyMan(name);
+    if (!(this instanceof LazyMan)) return new LazyMan(name);
     this.firstPromise = this.promise = new Promise((fullfill, reject) => {
         console.log(`hello ${name}`);
         fullfill();
