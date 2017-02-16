@@ -1,6 +1,7 @@
 ---
 title: 使用自定义属性桥接css和javascript(翻译)
 date: 2017-02-16 09:46:10
+description: CSS自定义属性除了简单的保存和获取CSS值机制外，还有很多有趣的用处。在这篇文章里，我们将会探索自定是属性的最佳实践。
 categories: 
   - 前端
   - CSS
