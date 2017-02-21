@@ -32,6 +32,10 @@ function deepCopy(obj) {
     }
     return target;
 }
+
+function isPlainObject(o) {
+    return Object.prototype.toString.call(o) === "[object Object]";
+}
 ```
 
 ## 非递归
@@ -65,5 +69,9 @@ function deepCopy(obj) {
         }
     }
     return target;
+}
+
+function isPlainObject(o) {
+    return Object.prototype.toString.call(o) === "[object Object]";
 }
 ```
