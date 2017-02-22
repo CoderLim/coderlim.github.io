@@ -1,0 +1,920 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="VMypTgtRDI" />
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="personal-blog,jekyll,个人博客,github-pages," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="博客对于我来说还是生活必备的，主要有两方面的作用：1、记录技术点；2、技术探讨.当然对于其他人博客还可以记录生活的点点滴滴，写日记等，其实博客就是电子笔记本，纸上可以写的都可以写到博客里；但是博客是公开的，是让博主有分享精神，第三方的博客很方便，但是有自己的博客不是更酷。个人博客与第三方博客的最大不同就是个人博客有更大的灵活性，随意设置样式，更换主题；可以把自己的简历写到博客里，省去了打印的烦恼，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于jekyll＋github-pages的个人博客">
+<meta property="og:url" content="http://gengliming.com/2016/07/01/make-personal-blog-via-jekyll/index.html">
+<meta property="og:site_name" content="茗空间">
+<meta property="og:description" content="博客对于我来说还是生活必备的，主要有两方面的作用：1、记录技术点；2、技术探讨.当然对于其他人博客还可以记录生活的点点滴滴，写日记等，其实博客就是电子笔记本，纸上可以写的都可以写到博客里；但是博客是公开的，是让博主有分享精神，第三方的博客很方便，但是有自己的博客不是更酷。个人博客与第三方博客的最大不同就是个人博客有更大的灵活性，随意设置样式，更换主题；可以把自己的简历写到博客里，省去了打印的烦恼，">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/personal-blog-joke1.png">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/personal-blog-happy.png">
+<meta property="og:image" content="http://gengliming.com/assets/images/2016/personal-blog-freak.png">
+<meta property="og:updated_time" content="2017-02-22T08:17:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于jekyll＋github-pages的个人博客">
+<meta name="twitter:description" content="博客对于我来说还是生活必备的，主要有两方面的作用：1、记录技术点；2、技术探讨.当然对于其他人博客还可以记录生活的点点滴滴，写日记等，其实博客就是电子笔记本，纸上可以写的都可以写到博客里；但是博客是公开的，是让博主有分享精神，第三方的博客很方便，但是有自己的博客不是更酷。个人博客与第三方博客的最大不同就是个人博客有更大的灵活性，随意设置样式，更换主题；可以把自己的简历写到博客里，省去了打印的烦恼，">
+<meta name="twitter:image" content="http://gengliming.com/assets/images/2016/personal-blog-joke1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gengliming.com/2016/07/01/make-personal-blog-via-jekyll/"/>
+
+
+
+
+
+  <title> 基于jekyll＋github-pages的个人博客 | 茗空间 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-82479563-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb4bf2c9e4412568c20d45c3008276e3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">茗空间</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">嗨，我是耿笠茗，现居北京，就职于海航易建科技。</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://gengliming.com/2016/07/01/make-personal-blog-via-jekyll/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="CoderLim">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/assets/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="茗空间">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="茗空间" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于jekyll＋github-pages的个人博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-01T21:00:00+08:00">
+                2016-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/01/make-personal-blog-via-jekyll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/01/make-personal-blog-via-jekyll/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/01/make-personal-blog-via-jekyll/" class="leancloud_visitors" data-flag-title="基于jekyll＋github-pages的个人博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  博客对于我来说还是生活必备的，主要有两方面的作用：1、记录技术点；2、技术探讨.当然对于其他人博客还可以记录生活的点点滴滴，写日记等，其实博客就是电子笔记本，纸上可以写的都可以写到博客里；但是博客是公开的，是让博主有分享精神，第三方的博客很方便，但是有自己的博客不是更酷。个人博客与第三方博客的最大不同就是个人博客有更大的灵活性，随意设置样式，更换主题；可以把自己的简历写到博客里，省去了打印的烦恼，方便更新，更方便其他人（比如面试官）查看。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/assets/images/2016/personal-blog-joke1.png" alt="image"><br></p>
+<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p>从大学到现在我有多个平台的博客：<a href="http://blog.sina.com.cn/gengliming110" title="我的新浪博客" target="_blank" rel="external">新浪</a>, <a href="http://blog.csdn.net/zaijianluoye110" title="我的CSDN博客" target="_blank" rel="external">CSDN</a>, <a href="http://www.jianshu.com/users/6e62f1bcb77a/latest_articles" title="我的简书" target="_blank" rel="external">简书</a>。博客对于我来说还是生活必备的，主要有两方面的作用：1、记录技术点；2、技术探讨。<br>当然对于其他人博客还可以记录生活的点点滴滴，写日记等，其实博客就是电子笔记本，纸上可以写的都可以写到博客里；但是博客是公开的，是让博主有分享精神，<br>分享你的知识，分享你的快乐与忧伤。</p>
+<p>第三方的博客很方便，但是有自己的博客不是更酷。个人博客与第三方博客的最大不同就是个人博客有更大的灵活性，随意设置样式，更换主题；<br>可以把自己的简历写到博客里，省去了打印的烦恼，方便更新，更方便其他人（比如面试官）查看。</p>
+</blockquote>
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><h3 id="host-gator"><a href="#host-gator" class="headerlink" title="host gator"></a>host gator</h3><p>刚开始是看到<a href="http://collegeinfogeek.com/personal-website/" title="hostgator tutorial" target="_blank" rel="external">The Ultimate Guide To Building A Personal Website</a>，很高兴，终于可以有自己的博客了<br><br><img src="/assets/images/2016/personal-blog-happy.png" alt="image"><br><br>于是开始按照教程购买配置，什么？购买？没错，是需要花钱的，购买的网站就是口碑一向很好的hostgator，庆幸的是有优惠券，可以去百科找hostgator有可用的<br>优惠券，购买域名和主机大概花了我400+软妹币。跟着教程走没问题，很简单。</p>
+<p>一切都搞定了，安装wordpress，漂亮，<a href="http://gengliming.com">我的网站</a>可以访问了。但是还要选择主题样式，很麻烦，选了主题还要找图片，唉～对于我来<br>说还真费劲，如果可以直接修改源码可能对于我来说还容易点。</p>
+<p>就在我试了N个theme后，发现了jekyll主题，有多个主题都是我想要的，于是我就搜<strong>如何把jekyll主题设置到wordpress</strong>，发现了jekyll+github-pages打造自己<br>的博客，居然写着免费不花钱，什么？不花钱？！<br><br><img src="/assets/images/2016/personal-blog-freak.png" alt="image"><br></p>
+<p>其实还是需要花钱买域名的，主机就不需要了，这样就剩了300+软妹币，还好hostgator支持40天退款，但是最终退款是退到你的hostgator账户的，如果想转出来好想<br>还需要手续费，算了，放着吧，以后域名续费吧。</p>
+<h3 id="jekyll"><a href="#jekyll" class="headerlink" title="jekyll"></a>jekyll</h3><p>国外有很多人的技术博客都是基于jekyll。直接使用github主机，而且有很多主题可用，我当时创建是直接down的onevat的博客源码，然后自定义的。所以如果你<br>喜欢我的博客，就直接down我的代码，<a href="https://github.com/CoderLim/jekyll-based-blog" title="jekyll-based-blog" target="_blank" rel="external">这里</a>，但是不要忘记点击<a href="https://github.com/CoderLim/jekyll-based-blog" title="jekyll-based-blog" target="_blank" rel="external">这页面</a>右上角的star。其他都是次要的，主要的还是写博客，你需要懂得<a href="http://sspai.com/25137" title="markdown" target="_blank" rel="external">markdown</a>语法。</p>
+<h2 id="jekyll-based-blog"><a href="#jekyll-based-blog" class="headerlink" title="jekyll-based blog"></a>jekyll-based blog</h2><p>我的故事讲完了，该轮到你动手了，跟着<a href="http://jekyll.bootcss.com/" title="jekyll cn" target="_blank" rel="external">jekyll中国的官方教程</a>进行，很简单，如果有不懂的地方欢迎留言。如果你没有github账号,来<a href="https://github.com/" title="github" target="_blank" rel="external">这里注册</a>。<br>先让网站跑起来，更换域名下面再说。</p>
+<h3 id="添加google-analytic统计"><a href="#添加google-analytic统计" class="headerlink" title="添加google analytic统计"></a>添加google analytic统计</h3><p><a href="https://www.google.com/analytics/" title="google 统计" target="_blank" rel="external">来官网</a>，创建账户，添加必要的信息，系统就会生成一小段代码，按照要求粘贴到你的博客源码中就行了。</p>
+<p>如果你是down的<a href="https://github.com/CoderLim/jekyll-based-blog" title="jekyll-based-blog" target="_blank" rel="external">我的源码</a>，就不用粘贴代码了，但是还是要创建账户，添加必要信息，将系统生成的代码中的几个值对应设置到_config.yml中的ga字段就行了。</p>
+<h3 id="添加评论分享模块"><a href="#添加评论分享模块" class="headerlink" title="添加评论分享模块"></a>添加评论分享模块</h3><p>起初试了一下disqus，但是国内访问速度也是够了，有时压根就出不来，于是选择了<a href="http://www.jiathis.com/" title="jiaThis" target="_blank" rel="external">jiaThis</a>。进入jiaThis官网首页获取代码是关于<strong>分享</strong>的，如果需要就按教程来。<br><strong>评论</strong>是<a href="http://www.uyan.cc/" title="友言" target="_blank" rel="external">友言</a>提供的，好像友言被jiaThis收购了，所以在<a href="http://www.jiathis.com/" title="jiaThis" target="_blank" rel="external">jiaThis</a>有<a href="http://www.uyan.cc/" title="友言" target="_blank" rel="external">友言</a>的入口。</p>
+<p>关于评论和分享没什么可注意的，都是“获取代码”粘贴到你的源码相应位置就行了。</p>
+<h3 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h3><p>什么是seo？seo叫做搜索引擎优化，可以让其他网友更容搜到你的文章，增加访问量。</p>
+<p>如何做搜索引擎优化呢？如果你是down的<a href="https://github.com/CoderLim/jekyll-based-blog" title="jekyll-based-blog" target="_blank" rel="external">我的代码</a>就不用设置了，否则给你推荐一个第三方框架<a href="https://github.com/jekyll/jekyll-seo-tag" title="seo" target="_blank" rel="external">jekyll-seo-tag</a>，主要是优化meta数据。</p>
+<h3 id="如何使用我的域名"><a href="#如何使用我的域名" class="headerlink" title="如何使用我的域名"></a>如何使用我的域名</h3><ul>
+<li>先购买域名，我的是hostgator的花了60左右rmb；</li>
+<li><a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider" target="_blank" rel="external">配置DNS的A record</a>, 配置好后下面有个dig的测试语句，<br>测试没问题就没问题了；</li>
+<li><a href="https://help.github.com/articles/adding-or-removing-a-custom-domain-for-your-github-pages-site/" target="_blank" rel="external">设置你的github项目的域名</a><br><br>修改Name Server或者Manage DNS后要等最多48小时后才能访问你的域名</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>絮絮叨叨终于说完了，这篇文章不是教程，而是引导，因为你看不出我具体是如何做的。上面提到的官方教程足够简单，所以就不细化浪费时间了。<br>既然有了自己的博客，不妨把个人简历放上去，让面试官可以对你有个好印象。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1.<a href="http://www.jianshu.com/p/ffbbed22f984" target="_blank" rel="external">Jekyll使用篇 1 - 发布文章、加入评论功能、加入Google Analytics</a> : 内容如标题<br><br>2.<a href="http://jekyll.bootcss.com/" target="_blank" rel="external">jekyll 官网</a>：按步骤来 <br><br>3.<a href="https://www.google.com/analytics/" target="_blank" rel="external">google 统计</a>: 加入浏览量，新用户等统计 <br></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/personal-blog/" rel="tag"># personal-blog</a>
+          
+            <a href="/tags/jekyll/" rel="tag"># jekyll</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+            <a href="/tags/github-pages/" rel="tag"># github-pages</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/23/difference-between-ES5-and-ES6-in-reactive/" rel="next" title="React/ReactNative中ES5和ES6语法的区别">
+                <i class="fa fa-chevron-left"></i> React/ReactNative中ES5和ES6语法的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/16/react-native-redux/" rel="prev" title="如何在ReactNative中使用redux">
+                如何在ReactNative中使用redux <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/01/make-personal-blog-via-jekyll/"
+           data-title="基于jekyll＋github-pages的个人博客" data-url="http://gengliming.com/2016/07/01/make-personal-blog-via-jekyll/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="CoderLim" />
+          <p class="site-author-name" itemprop="name">CoderLim</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/coderlim" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://twitter.com/coderlim" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/6592713/coderlim" target="_blank" title="StackOverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  StackOverflow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导语"><span class="nav-number">1.</span> <span class="nav-text">导语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-number">2.</span> <span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#host-gator"><span class="nav-number">2.1.</span> <span class="nav-text">host gator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jekyll"><span class="nav-number">2.2.</span> <span class="nav-text">jekyll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jekyll-based-blog"><span class="nav-number">3.</span> <span class="nav-text">jekyll-based blog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加google-analytic统计"><span class="nav-number">3.1.</span> <span class="nav-text">添加google analytic统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加评论分享模块"><span class="nav-number">3.2.</span> <span class="nav-text">添加评论分享模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SEO"><span class="nav-number">3.3.</span> <span class="nav-text">SEO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用我的域名"><span class="nav-number">3.4.</span> <span class="nav-text">如何使用我的域名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CoderLim</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coderlim"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yoIsfXbcPd9CaI7dElXxRGTr-gzGzoHsz", "C6EPBupyikjJYvXlpkWnI23y");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

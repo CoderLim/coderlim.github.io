@@ -1,0 +1,1007 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="VMypTgtRDI" />
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,兼容性," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="总结常见的兼容性问题，包括CSS和javascript相关tip，持续更新中。。。如果有什么疑问或纠错，欢迎留言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见兼容性问题">
+<meta property="og:url" content="http://gengliming.com/2015/03/02/front-end-compatibility-issues/index.html">
+<meta property="og:site_name" content="茗空间">
+<meta property="og:description" content="总结常见的兼容性问题，包括CSS和javascript相关tip，持续更新中。。。如果有什么疑问或纠错，欢迎留言。">
+<meta property="og:updated_time" content="2017-02-22T08:17:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见兼容性问题">
+<meta name="twitter:description" content="总结常见的兼容性问题，包括CSS和javascript相关tip，持续更新中。。。如果有什么疑问或纠错，欢迎留言。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gengliming.com/2015/03/02/front-end-compatibility-issues/"/>
+
+
+
+
+
+  <title> 常见兼容性问题 | 茗空间 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-82479563-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb4bf2c9e4412568c20d45c3008276e3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">茗空间</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">嗨，我是耿笠茗，现居北京，就职于海航易建科技。</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://gengliming.com/2015/03/02/front-end-compatibility-issues/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="CoderLim">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/assets/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="茗空间">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="茗空间" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                常见兼容性问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-02T13:10:00+08:00">
+                2015-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/03/02/front-end-compatibility-issues/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/02/front-end-compatibility-issues/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/03/02/front-end-compatibility-issues/" class="leancloud_visitors" data-flag-title="常见兼容性问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  总结常见的兼容性问题，包括CSS和javascript相关tip，持续更新中。。。如果有什么疑问或纠错，欢迎留言。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>兼容性问题一直都是个头疼的问题，以至于很多接触过前端编程大部分人都会说页面太难调了。这篇文章是对常见兼容性问题的记录，有个问题是肯定不全，因为太多了，只是总结常见的兼容性问题<br>持续更新中。。。</p>
+</blockquote>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
+<li><a href="http://www.kwstu.com/Admin/ViewArticle/201409011604277330" target="_blank" rel="external">CSS hack大全&amp;详解（什么是CSS hack）</a></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 区分所有主流浏览器的hack：</div><div class="line">.element&#123;</div><div class="line">     color:#000;             /*w3c标准*/</div><div class="line">     [;color:#f00;];         /*Webkit(chrome和safari)*/</div><div class="line">     color:#666\9;           /*IE8*/</div><div class="line">     *color:#999;            /*IE7*/</div><div class="line">     _color:#333;            /*IE6*/</div><div class="line">&#125;</div><div class="line">:root .element&#123;color:#0f0\9;&#125;  /*IE9*/</div><div class="line">@media all and (-webkit-min-device-pixel-ratio:10000), not all and (</div><div class="line">-webkit-min-device-pixel-ratio:0) &#123; .element&#123;color:#336699;&#125;&#125;  /*opera*/</div><div class="line">@-moz-document url-prefix()&#123; .element&#123;color:#f1f1f1;&#125;&#125; /*Firefox*/</div></pre></td></tr></table></figure>
+<ul>
+<li><p>怪异模式会出现不可预料的错误，所以在文档最上面使用&lt;!DOCTYPE html&gt;;</p>
+</li>
+<li><p>浏览器默认的margin和padding不同，使用reset解决，但是不要这样设置：* {margin:0; padding:0 }，因为效率；</p>
+</li>
+<li><p>chrome中文界面下默认会将小于12px的文本强制按12px显示，使用-webkit-text-size-adjust:none;已经不能解决问题了，应该这样设置</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.fontsize2</span> &#123;</div><div class="line">	<span class="comment">/*-webkit-text-size-adjust: none;*/</span></div><div class="line">	<span class="attribute">font-size</span>: <span class="number">9px</span>;</div><div class="line">	<span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0.75);<span class="comment">/*12x0.75=9*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>超链接访问后hover样式就不显示了，被点击访问后的超链接不再具有hover和active；按照L-V-H-A：a:link{} a:visited{} a:hover{} a:active{} 顺序设置可解决；</p>
+</li>
+<li><p>同一BFC相邻box的margin会折叠：详细信息请<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing" target="_blank" rel="external">猛戳这里</a></p>
+</li>
+<li><p>png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理;</p>
+</li>
+<li><p>IE6双边距：block+float+margin就会出现此bug，增加样式_display:inline(或block); ie6的常见问题还有<a href="http://www.frontopen.com/1130.html" target="_blank" rel="external">猛戳着里</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/yangzhihello/article/details/41207175" target="_blank" rel="external">IE6 select穿透问题(div 定位无法遮盖select)! </a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/lancee/archive/2011/08/19/2145448.html" target="_blank" rel="external">IE6 1px的div</a></p>
+</li>
+<li><p><a href="http://w3help.org/zh-cn/causes/RB1001" target="_blank" rel="external">IE6 IE7 IE8(Q) 负边距导致元素溢出 hasLayout 容器时显示异常</a></p>
+</li>
+<li><p>text-align:center的子元素在非IE下不居中</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 在IE下div.child是居中现实的，但是在firefox和chrome下是left</div><div class="line">.container &#123;</div><div class="line">    text-align: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></div><div class="line">		child's content</div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">```    </div><div class="line"></div><div class="line">解决方案如下：</div><div class="line"></div><div class="line">```css</div><div class="line">// 方法一：</div><div class="line">       .container &#123;</div><div class="line">		text-align: center;</div><div class="line">		text-align: -webkit-center;</div><div class="line">		text-align: -moz-center;</div><div class="line">	&#125;</div><div class="line">// 方法二：</div><div class="line">       .container &#123;</div><div class="line">	    text-align: center;</div><div class="line">	&#125;</div><div class="line">	.container .child &#123;</div><div class="line">	    margin: auto;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>不能自动展开包含框：触发Layout来解决height:1%触法haslayout有一定风险，所以应使用height:0;或height:1px,但是overflow:hidden与height不能同时设置（同时设置height的值就回对元素的真实高度产生影响）,此时应使用zoom:1或者display:inline-block来触法haslayout</p>
+</li>
+<li><p>列表布局问题</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">    <span class="selector-tag">ul</span> &#123;</div><div class="line">        <span class="attribute">width</span>: <span class="number">60%</span>;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>li1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>li2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>li3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>定义列表宽度为60%，那么ul元素就拥有了layout特性，如果在ie浏览，会发现列表的项目符号消失了。<br>解决如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span> &#123;</div><div class="line">     <span class="attribute">width</span>: <span class="number">60%</span>;</div><div class="line">     <span class="attribute">padding-left</span>: <span class="number">1em</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在IE6及以下版本浏览器中，当列表项元素li中包含有块状现实的超链接元素时，列表元素之间的空格将不会被忽略，而且会额外增加一行；</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.a2,.a3 &#123;</div><div class="line">     display: block;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"l1"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"a1"</span>&gt;</span>a1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"l2"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"a2"</span>&gt;</span>a2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"l3"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"a3"</span>&gt;</span>a3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"l4"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"a4"</span>&gt;</span>a4<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在l3和l4下面都会多出一个空行；<br>解决如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.a2</span>,<span class="selector-class">.a3</span> &#123;</div><div class="line">     <span class="attribute">display</span>: block;</div><div class="line">     <span class="attribute">zoom</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>定位布局问题</li>
+</ul>
+<p>由于相对定位不能触法Layout特性，所以在使用定位时会出现莫名其妙的错误，如定位对象丢失、定位元素错位等，所以建议相对定位元素声名zoom:1</p>
+<ul>
+<li><p>IE6当在浮动元素之间增加HTML注释时下方会出现多余字符；</p>
+</li>
+<li><p><a href="http://blog.csdn.net/hedong37518585/article/details/6639222" target="_blank" rel="external">IE6 躲猫猫BUG的解决方案</a></p>
+</li>
+<li><p>IE浏览器出现背景与内容分离时，考虑触发Layout特性来解决</p>
+</li>
+</ul>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><p>更多关于dom操作的兼容性请参考《js高级程序设计(第三版)》第10章</p>
+<ul>
+<li><p>safari9.0.3中，Date(‘2015-10-10’)返回<code>Invalid Date</code>，因为它不认识’-‘，可以换成Date(‘2015/10/10’);</p>
+</li>
+<li><p>以前有篇文章：<a href="http://www.jianshu.com/p/f1d5e1e5fa5f" target="_blank" rel="external">跨浏览器的EventUtil&amp;&amp;StyleUtil</a></p>
+</li>
+<li><p>ie可以使用常规属性方法获取自定义属性（elment.customProp），也可以使用getAttribute(“customProp”)获取，FireFox只能使用getAttribute();</p>
+</li>
+<li><p>ie的event对象有<a href="http://www.w3school.com.cn/jsref/dom_obj_event.asp" target="_blank" rel="external">x,y(看这里)</a>属性，没有pageX,pageY;Fireforx下有pageX，pageY，没有x,y；</p>
+</li>
+<li><p>IE8前event没有pageX，pageY，解决如下</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> event = event || <span class="built_in">window</span>.event;</div><div class="line"> <span class="keyword">var</span> pageX = event.pageX;</div><div class="line">     pageY = event.pageY;</div><div class="line"></div><div class="line"> <span class="keyword">if</span> (pageX === <span class="literal">undefined</span>) &#123;</div><div class="line">   <span class="comment">// document.body（混杂模式），document.documentElement（标准模式）</span></div><div class="line">   pageX = event.clientX + (<span class="built_in">document</span>.body.scrollLeft || <span class="built_in">document</span>.documentElement.scrollLeft);</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">if</span> (pageY === <span class="literal">undefined</span>) &#123;</div><div class="line">   pageY = event.clientY + (<span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>cloneNode()方法在IE下会复制事件处理程序（非IE下不会），所以在复制之前最好先移除事件处理程序；</p>
+</li>
+<li><p>在IE中可以给createElement()传入完整的元素标签，也可以包含属性：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var div = document.createElement(&quot;&lt;div id=\&quot;myNewDiv\&quot; class=\&quot;box\&quot;&gt;&lt;/div&gt;&quot;);</div><div class="line">/*</div><div class="line">*这种方法有助于避开IE7及更早版本中动态创建元素的某些问题：</div><div class="line">*1.不能设置动态创建的iframe元素的name特性；</div><div class="line">*2.不能通过表单的reset方法重设动态创建的input元素；</div><div class="line">*3.动态创建的type特性为reset的button元素重设不了表单</div><div class="line">*4.动态创建的一批name相同的单选按钮彼此毫无关系。</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li><p>attributes属性，在IE7及更早版本会返回HTML元素中所有可能的特性，包括没有指定的特性。可以通过attribute的specified属性过滤，所有未设置过的特性该属性都是false，而其它浏览器不会为这类特性生成特性节点。</p>
+</li>
+<li><p>下面代码在IE解析下ul会有3个字节点（3个li），而在其他浏览器会有7个元素（3个li和4个li元素之间的文本节点）：</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>IE不允许访问script和style的子节点，所以动态创建script和style应这样处理：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Script</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params">code</span>) </span>&#123;</div><div class="line">     <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">     script.type = <span class="string">"text/javascript"</span>;</div><div class="line">     <span class="keyword">try</span> &#123;</div><div class="line">        script.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line">     &#125; <span class="keyword">catch</span>(e) &#123;</div><div class="line">        script.text = code;</div><div class="line">     &#125;</div><div class="line">     <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Style</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">code</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</div><div class="line">      style.type = <span class="string">"text/css"</span>;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">          style.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line">      &#125; <span class="keyword">catch</span>(e) &#123;</div><div class="line">          style.styleSheet.cssText = code;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">      head.appendChild(style);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>style,getComputedStyle,currentStyle,defaultView的区别<br><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a><br>有几点需要注意：<br>1、虽然currentStyle与getComputedStyle都是获取计算后的属性，但是键名还是有不少差异，比如“浮动”对应的键名可能是<br>cssFloat与styleFloat，获取值的时候应该这样</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle(element, <span class="literal">null</span>).getPropertyValue(<span class="string">"float"</span>);<span class="comment">// 属性名不需要驼峰式</span></div></pre></td></tr></table></figure>
+<p>2、但是ie9之前又不支持getPropertyValue，在老的IE浏览器（包括最新的），getAttribute方法提供了与getPropertyValue方法类似的功能</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">style.getAttribute(<span class="string">"backgroundColor"</span>); <span class="comment">//属性名需要是驼峰式</span></div></pre></td></tr></table></figure>
+<ul>
+<li>IE下是支持firstChild,lastChild,nextSibling,previousSibling,<br>但是在FF下，由于它会把标签之间的<strong>空格当成文本节点</strong>，所以为了准确地找到相应的元素，应该使用<br>:firstElementChild,lastElementChild,nextElementSibling,<br>previousElementSibling</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p>1.<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="external">Block formatting context</a>：介绍块级格式化上下文；<br><br>2.<a href="http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html" target="_blank" rel="external">前端精选文摘：BFC 神奇背后的原理</a>：介绍了什么是BFC，及BFC的应用；<br><br>3.<a href="http://blog.csdn.net/kongjiea/article/details/46341575" target="_blank" rel="external">前端知识点</a>：介绍了各种需要了解的点；<br><br>4.<a href="https://www.w3.org/TR/CSS21/visudet.html#containing-block-details" target="_blank" rel="external">Definition of “containingblock”</a>：包含快的定义<br><br>5.<a href="http://www.cnblogs.com/lhb25/p/story-of-clear-float.html" target="_blank" rel="external">前端精选文摘：那些年我们一起清除过的浮动</a>:内容包括如何触发BFC和hasLayout<br><br>6.<a href="http://www.frontopen.com/1130.html" target="_blank" rel="external">IE6中的常见BUG与相应的解决办法</a><br><br>7.<a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a><br><br>8.<a href="http://blog.sina.com.cn/s/blog_4586764e0101s6b7.html" target="_blank" rel="external">兼容的firstChild,lastChild,nextSibling,previousSibling写法(转)</a><br></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/兼容性/" rel="tag"># 兼容性</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/09/02/css2.1-visual-formatting-model/" rel="next" title="CSS视觉格式化模型">
+                <i class="fa fa-chevron-left"></i> CSS视觉格式化模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/05/some-funny-js-functions/" rel="prev" title="几个有趣的javascript函数">
+                几个有趣的javascript函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/03/02/front-end-compatibility-issues/"
+           data-title="常见兼容性问题" data-url="http://gengliming.com/2015/03/02/front-end-compatibility-issues/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="CoderLim" />
+          <p class="site-author-name" itemprop="name">CoderLim</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/coderlim" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://twitter.com/coderlim" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/6592713/coderlim" target="_blank" title="StackOverflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  StackOverflow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">1.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS"><span class="nav-number">2.</span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CoderLim</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"coderlim"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yoIsfXbcPd9CaI7dElXxRGTr-gzGzoHsz", "C6EPBupyikjJYvXlpkWnI23y");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
