@@ -62,6 +62,29 @@ var throttle = function(fn, timeout, delay) {
 };
 ```
 
+这种形式还需要计算剩余多少时间执行fn，继续改进：
+
+```
+var throttle = function(fn, internal) {
+    var __self = fn,
+        timer;
+    return function() {
+        var args = arguments,
+            __me = this;
+            
+        if (timer) {
+            return false;
+        }
+
+        timer = setTimeout(function() {
+            clearTimeout(timer);
+            timer = null;
+            __self.apply(__me, args);
+        }, interval || 500);
+    }
+}
+```
+
 - Debounce：bounce是反弹的意思，debouce就是不让弹，就像弹簧一样，你一直按着它，直到放手它才能弹起来；这种思想拿到节流来说就是：如果你一直滚动，那函数就一直不响应，直到你不滚动我才执行：
 
 ```
