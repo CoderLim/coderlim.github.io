@@ -10,3 +10,7 @@
 - hexo generate: 生成静态文件
 - hexo clean
 - hexo deploy: 部署
+
+## 搜索引擎收录指南
+
+http://www.cnblogs.com/tengj/p/5357879.html
