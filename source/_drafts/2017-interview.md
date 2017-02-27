@@ -1,0 +1,83 @@
+---
+title: 2017面试记
+tags:
+  - 前端
+  - 面试
+---
+
+## 蚂蚁金服电面
+
+### Vue与React
+
+面试官: 用过Vue、React这些框架吗？
+我：用过，Vue写过项目，原来学过一段时间ReactNative。
+面试官：你能说说Vue和React的区别吗？
+我：React给我的印象就是语法想对复杂，学习成本高。
+面试官：还有别的区别吗？
+。。。（心想虚拟DOM，不行，这是共同点）
+我：额。。。因为react我也没写过大项目，其他的区别就不知道了。
+
+### 双向绑定
+
+面试官：你知道双向绑定是如何实现的吗？
+我：（小紧张说了很多很乱，这里我组织一下语言说说）当数据赋值的时候，在该数据的setter方法中去改变UI，当UI有改变的时候，调其类似onchange的方法，在onchange中改变数据。
+面试官：你说的这是如何使用，你有没有想过像Vue和React这些是如何实现的？
+我：Vue的我了解，Vue中涉及到三个类Dep、watcher、observer，blabla。。。
+面试官：嗯，可以，还是可以说上来的。
+
+### diff算法
+
+面试官：你知道diff算法和虚拟dom吗？
+我：我了解虚拟dom和diff算法，但是没有深入研究过。
+面试官：嗯，没关系。
+
+面试官：你对es6了解吗？
+我：很熟悉，经常用到es6的语法。
+
+### 箭头函数
+
+面试官：你知道箭头函数和function函数的区别吗？
+我：箭头函数可以自动绑定当前作用域。
+面试官：还有其他区别吗？
+我：其他想不起来了，主要区别就是这一点。
+
+[更全面的答案](http://stackoverflow.com/questions/32535110/what-are-the-differences-if-any-between-es6-arrow-functions-and-functions-boun)
+1. Arrow functions cannot be constructed;
+2. Arrow functions do have lexical arguments, new.target and super as well (not only lexical this);
+3. Arrow functions don't actually bind a this value;
+4. Arrow functions cannot be generator functions (though they can return generators).
+
+### generator与promise
+
+面试官：好的，那你说说generator和promise的区别吧。
+我：generator的出现我感觉就是为了自动执行多个异步函数；promise是为了解决异步函数回调地狱，把倒金字塔形的回调，转化成线性执行；
+面试官：额。。。回头你可以去看看generator的使用方法。
+我：我看过generator的使用方法，generator可以使得函数暂停执行，通过调next可以继续执行。
+面试官：嗯，嗯，是，有这么点意思了。
+（我说的可能太主观了，都是我自己的理解，应该学会说说官方说法，或者更简单清晰的表达）
+（其实这个问题，说说两者是什么，有什么特点就ok了，是我想多了，哈哈）
+
+面试官：下面我问几个基础的js问题吧。
+我：好的。
+
+### 跨域
+
+我：跨域的主要方法是jsonp，利用img或者script标签的src属性，因为src属性是可以跨域的。window.domain也可以实现，突然这么问我，我一时想不起来其他的了。
+面试官：嗯，没事，可以。
+
+### 类的创建与继承
+
+面试官：在没有class之前，ES5之前是如何实现类的创建和继承的？
+我：我在原来看过js高级教程3，blabla。。。
+面试官：嗯，不错，那说说如何实现跨域吧。
+
+### cookie与localstorage
+
+面试官：你说说cookie与localstorage的区别。
+我：从数据量上说cookie的存储量要小，localstorage没有限制；cookie每次访问服务器的时候都会被http请求携带，localstrage是存储在本地的，主要就是这两点吧。
+面试官：嗯，好的，先聊到这里，我们是先电面，了解一下情况，接下来我们的主管会筛选比较好的面试。
+我：好的。
+
+### 总结
+
+这是今年的第一个电面，紧张，表达不清，不过该说的都说了，需要注意的是，如果有人为你xx和xx的区别，首先要说这两个东西是什么，以及有什么特点，因为面试官想知道的是你知道这两个是什么，而不是你有多么会用自己的话描述，往往自己的话描述的不够权威。
