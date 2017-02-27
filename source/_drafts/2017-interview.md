@@ -17,6 +17,8 @@ tags:
 。。。（心想虚拟DOM，不行，这是共同点）
 我：额。。。因为react我也没写过大项目，其他的区别就不知道了。
 
+更多内容可以参考[这里](http://www.tuicool.com/articles/2QJjeeQ)，这篇文章从两者的用法上来分析区别，最好是再文章顶部有个总结，不然让人感觉有点冗长。
+
 ### 双向绑定
 
 面试官：你知道双向绑定是如何实现的吗？
@@ -25,11 +27,18 @@ tags:
 我：Vue的我了解，Vue中涉及到三个类Dep、watcher、observer，blabla。。。
 面试官：嗯，可以，还是可以说上来的。
 
+```
+vue的双向绑定其实就是setter＋onchange；而react的双向绑定是基于state的
+```
+
 ### diff算法
 
 面试官：你知道diff算法和虚拟dom吗？
 我：我了解虚拟dom和diff算法，但是没有深入研究过。
 面试官：嗯，没关系。
+
+**react的diff算法**:[点我](http://www.infoq.com/cn/articles/react-dom-diff?from=timeline&isappinstalled=0)
+**vue的diff算法**:[点我](https://github.com/youngwind/blog/issues/91)
 
 面试官：你对es6了解吗？
 我：很熟悉，经常用到es6的语法。
@@ -42,10 +51,12 @@ tags:
 我：其他想不起来了，主要区别就是这一点。
 
 [更全面的答案](http://stackoverflow.com/questions/32535110/what-are-the-differences-if-any-between-es6-arrow-functions-and-functions-boun)
+```
 1. Arrow functions cannot be constructed;
 2. Arrow functions do have lexical arguments, new.target and super as well (not only lexical this);
 3. Arrow functions don't actually bind a this value;
 4. Arrow functions cannot be generator functions (though they can return generators).
+```
 
 ### generator与promise
 
@@ -65,6 +76,14 @@ tags:
 我：跨域的主要方法是jsonp，利用img或者script标签的src属性，因为src属性是可以跨域的。window.domain也可以实现，突然这么问我，我一时想不起来其他的了。
 面试官：嗯，没事，可以。
 
+主要有这[几种](http://www.cnblogs.com/2050/p/3191744.html)
+```
+1. jsonp;
+2. window.postMessage;
+3. window.domain;
+4. window.name;
+```
+
 ### 类的创建与继承
 
 面试官：在没有class之前，ES5之前是如何实现类的创建和继承的？
@@ -75,8 +94,10 @@ tags:
 
 面试官：你说说cookie与localstorage的区别。
 我：从数据量上说cookie的存储量要小，localstorage没有限制；cookie每次访问服务器的时候都会被http请求携带，localstrage是存储在本地的，主要就是这两点吧。
-面试官：嗯，好的，先聊到这里，我们是先电面，了解一下情况，接下来我们的主管会筛选比较好的面试。
+面试官：嗯，好的，先聊到这里，我们是先电面，了解一下情况，接下来我们的主管会筛选比较好的来邀请面试。
 我：好的。
+
+细节可以参考[这里](http://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
 
 ### 总结
 
