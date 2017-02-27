@@ -10,6 +10,9 @@
 - hexo generate: 生成静态文件
 - hexo clean
 - hexo deploy: 部署
+- hexo new draft "new draft": 新建草稿
+- hexo server --drafts: 预览草稿
+- hexo publish [layout] <filename>: 发布草稿
 
 ## 搜索引擎收录指南
 
