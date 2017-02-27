@@ -146,6 +146,9 @@ webpack
 
 这个教程算个入门引导，因为没有太难的问题，没实现webpack的各种插件、各种loader、热加载、自动刷新等等，自己去研究吧。奥，对了，[create-react-app][4]可以快速生成reactjs项目，但是没提供webpack的集成。
 
+----------------------------2017.02.27更新-----------------------------------
+今天看webpack2.x发现这里有更全面的[关于react配置教程][5]，大家参考一下吧。
+
 ## 参考
 [webpack][1]：webpack官方文档<br>
 [Introduction to webpack with ES2015 and React][2]<br>
@@ -156,3 +159,4 @@ webpack
 [2]:http://blog.scalac.io/2016/03/03/introduction-to-webpack-with-es2015-and-react.html
 [3]:https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
 [4]:https://facebook.github.io/react/docs/installation.html#creating-a-single-page-application "react.js官方教程"
+[5]:https://webpack.js.org/guides/hmr-react/ "webpack官方教程之react"
