@@ -54,6 +54,11 @@ vue的双向绑定其实就是setter＋onchange；而react的双向绑定是基�
 **react的diff算法**:[点我](http://www.infoq.com/cn/articles/react-dom-diff?from=timeline&isappinstalled=0)
 **vue的diff算法**:[点我](https://github.com/youngwind/blog/issues/91)
 
+### hybrid
+
+面试官：有没有做过混合开发？
+我：没有。
+
 ### 与native交互
 
 面试官：你平常做pc端多还是移动端多？
