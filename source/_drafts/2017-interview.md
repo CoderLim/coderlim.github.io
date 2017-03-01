@@ -65,6 +65,11 @@ vue的双向绑定其实就是setter＋onchange；而react的双向绑定是基�
 我：都差不多吧，移动端稍微多一点。
 面试官：有没有做过与native的交互？
 我：做过，与移动开发合作过。
+面试官：你知道是如何交互的吗？
+我：不知道。
+
+[js与ios交互](http://blog.csdn.net/lwjok2007/article/details/47058795)
+[js与android交互](http://blog.csdn.net/ithomer/article/details/8737999/)
 
 面试官：你对es6了解吗？
 我：很熟悉，经常用到es6的语法。
