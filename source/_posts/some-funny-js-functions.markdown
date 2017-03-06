@@ -12,6 +12,7 @@ tags:
   - throttle
   - bounce
   - tco
+  - asyncify
   - 尾递归优化
 ---
 
@@ -23,7 +24,7 @@ tags:
 
 - Throttle：这种方式是类似水龙头，当水滴足够大时水滴就会掉下来；类似的，当时间超过某个timeout的时候就执行函数
 
-```
+```js
 var throttle = function(fn, timeout) {
       var last = new Date().getTimes();
 
@@ -38,7 +39,7 @@ var throttle = function(fn, timeout) {
 
 忽然想到一个问题，如果需要节流的是scroll事件，如果滚动的时间超短上面函数岂不是不能执行了，那就这样实现：
 
-```
+```js
 var throttle = function(fn, timeout, delay) {
     var timer = null,
         last = null;
@@ -64,7 +65,7 @@ var throttle = function(fn, timeout, delay) {
 
 这种形式还需要计算剩余多少时间执行fn，继续改进：
 
-```
+```js
 var throttle = function(fn, internal) {
     var __self = fn,
         timer;
@@ -87,7 +88,7 @@ var throttle = function(fn, internal) {
 
 - Debounce：bounce是反弹的意思，debouce就是不让弹，就像弹簧一样，你一直按着它，直到放手它才能弹起来；这种思想拿到节流来说就是：如果你一直滚动，那函数就一直不响应，直到你不滚动我才执行：
 
-```
+```js
 var debounce = function(fn, delay) {
   var timer = null;
   return function() {
@@ -108,7 +109,7 @@ var debounce = function(fn, delay) {
 
 - Trampoline：蹦床函数，为何叫蹦床？没明白。这个函数的作用是把递归通过循环实现。
 
-```
+```js
 function trampoline(fn) {
     while (f && f instanceof Function) {
       f = f();
@@ -127,7 +128,7 @@ trampoline(sum(1,100000));
 
 - Tco：不用修改原函数的尾递归优化，我喜欢这个函数，因为它不太好理解，看不懂的朋友请参考上面的链接。
 
-```
+```js
 function tco(fn) {
       var value,
         active = false,
@@ -162,7 +163,7 @@ console.log(sum(1, 10000));
 
 展开你的参数，看示例：
 
-```
+```js
 function spread(fn) {
   return Function.prototype.apply.bind(fn, null);
 }
@@ -172,6 +173,36 @@ var fn = spread(function (x, y) {
 })
 
 fn([1,2])
+```
+
+## asyncify
+
+异步化函数，不会影响异步函数，会将同步函数异步化，防止过早调用，参考：《你不懂的js（中）》第二部分 异步和性能 第二章 回调 2.4 省点回调
+
+```js
+function asyncify(fn) {
+    var oldFn = fn,
+        timer = setTimeout(() => {
+            timer = null;
+            fn && fn();
+        }, 0);
+    return function(...args) {
+        if (timer) {
+            fn = oldFn.bind.apply(oldFn, [this, ...args]);
+        } else {
+            oldFn.apply(this, args);
+        }
+    }
+}
+
+asyncify(() => {
+    console.log('hello');
+});
+
+console.log('world');
+
+// world  
+// hello
 ```
 
 ## 参考
