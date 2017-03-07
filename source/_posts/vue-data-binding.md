@@ -1,15 +1,19 @@
 ---
 title: vue数据绑定
-description: 这个题目很宽泛，因为你不知道我将会写什么内容，是vue数据绑定的用法，还是vue如何实现数据绑定，其实这里会聊聊如何实现数据绑定。我第一次知道MVVM和数据绑定是在自学WPF的时候，那是一种很美妙的感觉，代码量变少了，可以将注意力放在功能实现上，而不用去考虑UI与Model的同步。
 tags:
   - vue
   - 数据绑定
-categories: 
+description: >-
+  《最强大脑》水哥失败了，很不可思议，神一样的存在居然败给了余奕沛，为什么呢？我就不表达我的看法了。这篇博客的题目很宽泛，因为你不知道我将会写什么内容，是vue数据绑定的用法，还是vue如何实现数据绑定，其实这里是想简单聊聊如何实现数据绑定。我第一次知道MVVM和数据绑定是在自学WPF的时候，那是一种很美妙的感觉，代码量变少了，可以将注意力放在功能实现上，而不用去考虑UI与Model的同步。这篇文章仅适合熟悉vue和es6语法的童鞋，如果不满足这两个条件，请移步其他文章。
+categories:
   - 前端
-  - vue 
+  - vue
+date: 2017-03-07 10:14:46
 ---
 
->这个题目很宽泛，因为你不知道我将会写什么内容，是vue数据绑定的用法，还是vue如何实现数据绑定，其实这里会聊聊如何实现数据绑定。我第一次知道MVVM和数据绑定是在自学WPF的时候，那是一种很美妙的感觉，代码量变少了，可以将注意力放在功能实现上，而不用去考虑UI与Model的同步，同时MVVM解决了MVC(MassiveVC)问题。
+
+![黑幕](/assets/images/2017/vue-data-binding1.png)
+*没图片太单调，用啥图呢，思考片刻选择了这幅图*
 
 ## 数据绑定的本质
 
@@ -49,36 +53,40 @@ input.addEventListener('change', function() {
 
 这里只聊聊如何实现当数据变化时更新页面，至于当UI内容变化如何更新数据，其实和上面的例子是一样的。那你肯定会问，难道**数据**变化时更新页面难道和上面的例子不一样吗？当然不一样，继续看（你不要凑字数好吗？好的）。
 
-我先来索索原理，接下来再上代码。尤大在实现数据变化更新UI时用到了动态收集依赖Dep（什么是依赖，一会儿会解释），在更新页面时就会重新收集一次依赖，什么样的算依赖呢，就是在更新UI的Watcher（下面称为UI-Watcher）回调函数执行中，被调用了getter方法的数据，就会与UI-Watcher相互依赖，当该数据调setter方法时，就会触发UI-Watcher的回调去更新UI。
+我先来索索原理，接下来再上代码。尤大在实现数据变化更新UI时用到了动态收集依赖Dep（什么是依赖，一会儿你就懂了），在更新页面时就会重新收集一次依赖，实际上就是在Watcher的expOrFn执行过程中，被调用了getter方法的数据（当然这个数据是可观察的，即用**Observer**包装过），就会与该watcher相互依赖，当该数据调setter方法时，就会触发watcher的回调。看到这儿崩溃了，乱七八糟的，还是看下面代码吧，把代码看两遍再来看这段文字。
 
-### Dep
+以下是精简后的代码，我把其他细节全部去掉了，只留下真正的核心代码。
+
+### Dep(依赖)
+
+dep是用来连接data与watcher的桥梁，每个data的属性都对应一个dep。
 
 ```js
 let uid = 0;
-
 export default class Dep {
+    // 存放当前的watcher
     static target;
-
     constructor() {
+        // 保存的是Watcher实例
         this.subs = [];
+        // 唯一标示
         this.id = uid++;
     }
-
+    // 添加watcher
     addSub(sub) {
         this.subs.push(sub);
     }
-
+    // 移除watcher
     removeSub(sub) {
         const idx = this.subs.indexOf(sub);
         this.subs.splice(idx, 1);
     }
-
     depend() {
         if (Dep.target) {
             Dep.target.addDep(this);
         }
     }
-
+    // 执行所有watcher的run方法
     notify() {
         const subs = this.subs.slice();
         for (let i = 0, l = subs.length; i < l; i++) {
@@ -87,6 +95,7 @@ export default class Dep {
     }
 }
 
+// 保存当前watcher
 Dep.target = null
 
 export function pushTarget(_target) {
@@ -95,38 +104,37 @@ export function pushTarget(_target) {
 
 export function popTarget() {
     Dep.target = null;
-
 ```
 
 ### Watcher
 
+watcher负责收集dep，保存dep变化时(也就是data属性变化时)调的callback。
+
 ```js
 export default class Watcher {
-
     constructor(expOrFn, cb) {
         // 当前依赖
         this.deps = [];
+        this.depIds = new Set();
         // 新关联的依赖
         this.newDeps = [];
-        this.depIds = new Set();
         this.newDepIds = new Set();
         // 回调函数
         this.cb = cb;
         this.getter = expOrFn; // 只考虑expOrFn是函数的情况
         this.value = this.get(); // 这里value其实没用到
     }
-
     /**
      * 重新收集依赖
      */
     get() {
+        // 将当前watcher放到Dep.target
         pushTarget(this);
         const value = this.getter(); // 这里value其实没用到
         popTarget();
         this.cleanupDeps();
         return value;
     }
-
     /**
      * 添加一个依赖
      */
@@ -140,7 +148,6 @@ export default class Watcher {
             }
         }
     }
-
     /**
      * 整理新依赖和旧依赖
      */
@@ -161,7 +168,6 @@ export default class Watcher {
         this.newDeps = tmp;
         this.newDeps.length = 0;
     }
-
     /**
      * 当依赖有变化时就会执行这里
      */
@@ -169,9 +175,8 @@ export default class Watcher {
         const value = this.get(); // value其实没用到
         this.cb();
     }
-
     /**
-     * Depend on all deps collected by this watcher.
+     * 将依赖添加到Dep.target
      */
     depend() {
         let i = this.deps.length;
@@ -184,11 +189,12 @@ export default class Watcher {
 
 ### Observer
 
+observer使得data是可观察的，为data的每个属性都添加了dep，这里你会见到期盼已久的用`Object.defineProperty`定义的setter方法，在setter方法里通过dep.notify最终通知watcher执行回调方法。
+
 ```js
 export default class Observer {
     constructor(value) {
         this.value = value;
-        this.dep = new Dep();
         this.walk(value);
     }
 
@@ -211,8 +217,7 @@ export function defineReactive(obj, key, val) {
         enumerable: true,
         configurable: true,
         get: function reactiveGetter() {
-            // 当Watcher调其自身的get时，将Dep.target赋值为该Watcher。
-            // 
+            // 当Watcher调其自身的get（️注意不是getter）方法时，将Dep.target赋值为该Watcher。
             if (Dep.target) {
                 // dep.depend作用是让watcher（即Dep.target）与此dep互相引用
                 // 伪代码是酱的：
@@ -227,7 +232,7 @@ export function defineReactive(obj, key, val) {
         },
         set: function reactiveSetter(newVal) {
             this.__value = newVal;
-            // 
+            // data的属性变了，dep通知watcher该执行回调函数了
             dep.notify()
         }
     })
@@ -255,10 +260,23 @@ console.log('设置name');
 obj.name = 'zwr';
 console.log('设置sex');
 obj.sex = 'female';
+
+// 打印
+-读取过的属性会与watcher建立联系-
+glm
+-----------------------------
+设置name
+-读取过的属性会与watcher建立联系-
+glm
+-----------------------------
+Watcher回调函数
+设置sex
 ```
 
 从上面的例子可以看出，在设置name时，触发了watcher的回调，而在设置sex时，没有触发。
 
+[完整代码](https://github.com/CoderLim/you-dont-know-mvvm)
+
 ## 总结
 
-一直在探索怎样的表达方式更容易让人接受，希望以一种轻松诙谐的方式写博客，但是写着着就严肃了，毕竟时间有限，就不贫嘴了，我是个正经人（呵呵，这是我听过最搞笑的一句话）。
+到现在已经把相关的细节说完了，虽然我的阐述不多，但是已经加上了必要的注释。vue的数据绑定看似逻辑复杂，使用了动态收集依赖的思想，它的好处就是，dep与watcher的关系不是一成不变的，在更新页面的时候，只有被访问属性的dep才会与当前watcher建立联系，只有这个属性才能出发watcher的回调函数。如有有问题欢迎留言。
