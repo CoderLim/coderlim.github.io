@@ -21,3 +21,4 @@ http://gengliming.com/2015/06/05/some-funny-js-functions/
 http://gengliming.com/2015/03/02/front-end-compatibility-issues/
 http://gengliming.com/2014/09/02/css2.1-visual-formatting-model/
 http://gengliming.com/2014/07/13/javascript-class-creation-inheritage/
+http://gengliming.com/2017/03/07/vue-data-binding/
