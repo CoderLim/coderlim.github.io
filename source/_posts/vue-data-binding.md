@@ -58,7 +58,7 @@ input.addEventListener('change', function() {
 以下是精简后的代码，我把其他细节全部去掉了，只留下真正的核心代码。
 
 ### Dep(依赖)
-
+ 
 dep是用来连接data与watcher的桥梁，每个data的属性都对应一个dep。
 
 ```js
