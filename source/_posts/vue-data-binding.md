@@ -1,5 +1,5 @@
 ---
-title: vue数据绑定
+title: 聊聊Vue的数据绑定
 tags:
   - vue
   - 数据绑定
