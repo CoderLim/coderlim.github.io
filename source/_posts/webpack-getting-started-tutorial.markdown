@@ -27,7 +27,7 @@ tags:
 
 你需要已经安装安装[node.js](https://nodejs.org/).
 
-```
+```bash
 $ npm install webpack -g
 ```
 
@@ -35,19 +35,19 @@ $ npm install webpack -g
 
 ## 设置编译器(Compilation)
 
-以一个空文件夹作为开始. <br/>
+以一个空文件夹作为开始.
 
-创建这些文件:<br/>
+创建这些文件:
 
 **add entry.js**
 
-```
+```js
 document.write("It works");
 ```
 
 **add index.html**
 
-```
+```html
 <html>
     <head>
         <meta charset="utf-8">
@@ -60,15 +60,15 @@ document.write("It works");
 
 然后执行下面的命令:
 
-```
+```bash
 $ webpack ./entry.js bundle.js
 ```
 
-它将会编译你的文件并且创建一个**bundle**文件.<br/>
+它将会编译你的文件并且创建一个**bundle**文件。
 
 如果成功就会显示如下:
 
-```
+```js
 Version: webpack 1.12.11
 Time: 51ms
     Asset     Size  Chunks             Chunk Names
@@ -83,19 +83,19 @@ chunk    {0} bundle.js (main) 28 bytes [rendered]
 
 接下来添加**content.js**:
 
-```
+```js
 module.exports = "It works from content.js.";
 ```
 
 更新**entry.js**
 
-```
+```js
 document.write(require("./content.js"));
 ```
 
 然后重新编译:
 
-```
+```bash
 $ webpack ./entry.js bundle.js
 ```
 
@@ -111,25 +111,25 @@ $ webpack ./entry.js bundle.js
 
 我们想在程序中添加css文件。
 
-webpack只能处理本地的javascript，因此我们需要`css-loader`来处理CSS文件。
-我们也需要`style-loader`来实现在CSS文件中的样式。
+webpack只能处理本地的javascript，因此我们需要`css-loader`来处理CSS文件。我们也需要`style-loader`来实现在CSS文件中的样式。
 
-运行`npm install css-loader style-loader`来安装loaders。（它们需要本地安装，不需要`-g`）
-这将会创建一个`node_module`文件夹，loaders存在于这个文件夹里。
+运行`npm install css-loader style-loader`来安装loaders。（它们需要本地安装，不需要`-g`）这将会创建一个`node_module`文件夹，loaders存在于这个文件夹里。
 
 让我们来使用它们，添加**style.css**:
 
-```
+```css
 body {
     background: yellow;
 }
 ```
+
 更新**entry.js**:
 
-```
+```js
 require("!style!css!./style.css");
 document.write(require("./content.js"));
 ```
+
 重新编译，并且刷新浏览器，你将会看到黄色背景。
 
 > 通过将loader作为模块请求的前缀，模块就能穿过loader的管道。这些loader按指定的方式转化文件的内.
@@ -143,14 +143,14 @@ document.write(require("./content.js"));
 
 更新**entry.js**
 
-```
+```js
 require("./style.css");
 document.write(require("./content.js"));
 ```
 
 编译：
 
-```
+```js
 webpack ./entry.js bundle.js --module-bind 'css=style!css'
 ```
 > 一些环境可能需要双引号：–module-bind “css=style!css”
@@ -161,7 +161,7 @@ webpack ./entry.js bundle.js --module-bind 'css=style!css'
 
 我们想把相关的配置放倒配置文件里，添加**webpack.config.js**
 
-```
+```js
 module.exports = {
     entry: "./entry.js",
     output: {
@@ -178,7 +178,7 @@ module.exports = {
 
 现在我们只需要运行`webpack`编译，结果如下：
 
-```
+```js
 Version: webpack 1.12.11
 Time: 379ms
     Asset     Size  Chunks             Chunk Names
@@ -199,7 +199,7 @@ chunk    {0} bundle.js (main) 8.86 kB [rendered]
 
 我们可以这么做：
 
-```
+```js
 webpack --progress --colors
 ```
 
@@ -207,7 +207,7 @@ webpack --progress --colors
 
 我们不想每次修改都要手动重新编译，可以这样做：
 
-```
+```bash
 webpack --progress --colors --watch
 ```
 
@@ -220,11 +220,11 @@ webpack可以缓存未修改的模块和输出文件。
 
 development server更好些。
 
-```
+```bash
 npm install webpack-dev-server -g
 ```
 
-```
+```bash
 webpack-dev-server --progress --colors
 ```
 

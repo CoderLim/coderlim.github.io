@@ -9,10 +9,7 @@ tags:
   - 入门
 ---
 
-> 此博客将记录了我学习RN过程中很有价值的内容，源码可以参考[ReactNativeLeaning(ES6版)][1]，源码最后附了一个sinaWebBo项目，看着还不错^_^。
-> 顺便支持一下[react-native-image-browser][2]吧。<br/>
->
-> 新增：“如何运行在android模拟器”
+> 此博客将记录了我学习RN过程中很有价值的内容，源码可以参考[ReactNativeLeaning(ES6版)][1]，源码最后附了一个sinaWebBo项目，看着还不错^_^。顺便支持一下[react-native-image-browser][2]吧。
 
 ## 1、Hello World！
 
@@ -25,8 +22,8 @@ atom+nuclide的[详细使用方法](http://blog.csdn.net/hello_hwc/article/detai
 
 ## 3、学习的两个重点，布局和语言
 
-- 如果布局不会请参考阮一峰的[Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)和张鑫旭的[CSS box-flex属性，然后弹性盒子模型简介](http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%E5%B1%9E%E6%80%A7%EF%BC%8C%E7%84%B6%E5%90%8E%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E7%AE%80%E4%BB%8B/)
-- 如果es6不会请参考阮一峰的[ECMAScript 6入门](http://es6.ruanyifeng.com/)，如果你以前了解过js，再看看看es5与es6的[区别](https://segmentfault.com/n/1330000004266763)吧，这篇文章对于熟悉es5不熟悉es6的来说很有价值
+- 如果布局不会请参考阮一峰的[Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)和张鑫旭的[CSS box-flex属性，然后弹性盒子模型简介](http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%E5%B1%9E%E6%80%A7%EF%BC%8C%E7%84%B6%E5%90%8E%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E7%AE%80%E4%BB%8B/)。
+- 如果es6不会请参考阮一峰的[ECMAScript 6入门](http://es6.ruanyifeng.com/)，如果你以前了解过js，再看看看es5与es6的[区别](https://segmentfault.com/n/1330000004266763)吧，这篇文章对于熟悉es5不熟悉es6的来说很有价值。
 
 ## 4、控件是页面展示的基本组成
 
@@ -36,20 +33,19 @@ react是基于组件开发的，但是组件是由控件组成的。
 
 ## 5、看看官方的Demo
 
-github地址[在这里](https://github.com/facebook/react-native)，在examples文件夹里有几个很简单的demo，对于熟练编码还是有价值的，不妨跟着敲一遍，不过都是es5实现的，其中movies的es6实现[在这里](https://github.com/CoderLim/ReactNativeLeaning/tree/master/3.1FacebookMovies)（不过不完全）。
+Github地址[在这里](https://github.com/facebook/react-native)，在examples文件夹里有几个很简单的demo，对于熟练编码还是有价值的，不妨跟着敲一遍，不过都是es5实现的，其中movies的es6实现[在这里](https://github.com/CoderLim/ReactNativeLeaning/tree/master/3.1FacebookMovies)（不过不完全）。
 
 ### 5.1 如何运行官方的Demo呢？我用运行UIExplorer举例
 
-- 1.cd 到UIExplorer文件夹；
-- 2.npm install；安装完后，直接在UIExplorer文件夹下运行react-native run-ios，会报错：Command `run-ios` unrecognized. Did you mean XXX，为何会报错还不知道；
-- 3.运行“开发服务器”，如果你的编辑器是atom，那么cmd＋shift＋p，输入start packager，回车就会打开服务器了(或者在UIExplorer文件夹下npm start即可)；
-- 4.使用xcode运行。
+1. cd 到UIExplorer文件夹；
+2. npm install；安装完后，直接在UIExplorer文件夹下运行react-native run-ios，会报错：Command `run-ios` unrecognized. Did you mean XXX，为何会报错还不知道；
+3. 运行“开发服务器”，如果你的编辑器是atom，那么cmd＋shift＋p，输入start packager，回车就会打开服务器了(或者在UIExplorer文件夹下npm start即可)；
+4. 使用xcode运行。
 
 ### 5.2 可能会遇到的error
 
 - 1.Could not connect to development server：没有启动服务器，如何启动上面提到了使用atom的启动方式和npm start方式；
 - 2.cannot find entry file examples/UIExplorer：这是因为当前启动的服务器是别的项目的，需要重启服务器；
-
 
 ## 6、卡顿是用户体验的杀手
 
@@ -68,14 +64,16 @@ ps：手机和电脑要用数据线连接；手机和电脑要连到相同的wif
 
 安装jdk和android studio（都装最新的就行了），以下问题都是我按顺序遇到的：<br/>
 
-1. SDK location not found. Define location with sdk.dir in the locSDK location not found. Define location with sdk.dir in the local.properties file or with an ANDROID_HOME environment variable <br/>
+1. SDK location not found. Define location with sdk.dir in the locSDK location not found. Define location with sdk.dir in the local.properties file or with an ANDROID_HOME environment variable.
 
- *  如何查看sdk location：打开android studio --> preferences -> 查找sdk即可看到路径；*
- *  设置ANDROID_HOME：参考https://spring.io/guides/gs/android/ *
+ *  如何查看sdk location：打开android studio --> preferences -> 查找sdk即可看到路径;
+ *  设置ANDROID_HOME：参考https://spring.io/guides/gs/android/
 
-    `Mac OS X
+    ```
+    Mac OS X
     export ANDROID_HOME= sdk 路径
-    export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools` <br/>
+    export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+    ```
 
 2. failed to find target with hash string 'android-23' in: 你的sdk的路径：直接在android studio中的preferences里搜sdk，然后apply就行了
 3. failed to find Build Tools revision 23.0.1： 还是在android studio的preferences的Android SDK下，选择SDK Tools，勾选右下角的Show Package Details，选择23.0.1的就行了，然后apply

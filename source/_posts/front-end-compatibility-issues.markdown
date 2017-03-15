@@ -64,7 +64,7 @@ tags:
 - text-align:center的子元素在非IE下不居中
 
 ```css
-// 在IE下div.child是居中现实的，但是在firefox和chrome下是left
+/* 在IE下div.child是居中现实的，但是在firefox和chrome下是left */
 .container {
     text-align: center;
 }
@@ -81,14 +81,14 @@ tags:
 解决方案如下：
 
 ```css
-// 方法一：
+/* 方法一：*/
        .container {
 		text-align: center;
 		text-align: -webkit-center;
 		text-align: -moz-center;
 	}
-// 方法二：
-       .container {
+/* 方法二：*/
+    .container {
 	    text-align: center;
 	}
 	.container .child {
@@ -264,11 +264,11 @@ previousElementSibling
 
 ## 参考
 
-> 1.[Block formatting context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context)：介绍块级格式化上下文；<br/>
-> 2.[前端精选文摘：BFC 神奇背后的原理](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)：介绍了什么是BFC，及BFC的应用；<br/>
-> 3.[前端知识点](http://blog.csdn.net/kongjiea/article/details/46341575)：介绍了各种需要了解的点；<br/>
-> 4.[Definition of "containingblock"](https://www.w3.org/TR/CSS21/visudet.html#containing-block-details)：包含快的定义<br/>
-> 5.[前端精选文摘：那些年我们一起清除过的浮动](http://www.cnblogs.com/lhb25/p/story-of-clear-float.html):内容包括如何触发BFC和hasLayout<br/>
-> 6.[IE6中的常见BUG与相应的解决办法](http://www.frontopen.com/1130.html)<br/>
-> 7.[获取元素CSS值之getComputedStyle方法熟悉](http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/)<br/>
-> 8.[兼容的firstChild,lastChild,nextSibling,previousSibling写法(转)](http://blog.sina.com.cn/s/blog_4586764e0101s6b7.html)<br/>
+1. [Block formatting context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context)：介绍块级格式化上下文；<br/>
+2. [前端精选文摘：BFC 神奇背后的原理](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)：介绍了什么是BFC，及BFC的应用；<br/>
+3. [前端知识点](http://blog.csdn.net/kongjiea/article/details/46341575)：介绍了各种需要了解的点；<br/>
+4. [Definition of "containingblock"](https://www.w3.org/TR/CSS21/visudet.html#containing-block-details)：包含快的定义<br/>
+5. [前端精选文摘：那些年我们一起清除过的浮动](http://www.cnblogs.com/lhb25/p/story-of-clear-float.html):内容包括如何触发BFC和hasLayout<br/>
+6. [IE6中的常见BUG与相应的解决办法](http://www.frontopen.com/1130.html)<br/>
+7. [获取元素CSS值之getComputedStyle方法熟悉](http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/)<br/>
+8. [兼容的firstChild,lastChild,nextSibling,previousSibling写法(转)](http://blog.sina.com.cn/s/blog_4586764e0101s6b7.html)<br/>
