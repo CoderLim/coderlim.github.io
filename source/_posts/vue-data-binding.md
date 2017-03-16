@@ -53,7 +53,22 @@ input.addEventListener('change', function() {
 
 这里只聊聊如何实现当数据变化时更新页面，至于当UI内容变化如何更新数据，其实和上面的例子是一样的。那你肯定会问，难道**数据**变化时更新页面难道和上面的例子不一样吗？当然不一样，继续看（你不要凑字数好吗？好的）。
 
-我先来索索原理，接下来再上代码。尤大在实现数据变化更新UI时用到了动态收集依赖Dep（什么是依赖，一会儿你就懂了），在更新页面时就会重新收集一次依赖，实际上就是在Watcher的expOrFn执行过程中，被调用了getter方法的数据（当然这个数据是可观察的，即用**Observer**包装过），就会与该watcher相互依赖，当该数据调setter方法时，就会触发watcher的回调。看到这儿崩溃了，乱七八糟的，还是看下面代码吧，把代码看两遍再来看这段文字。
+我先来说说原理，接下来再上代码。尤大在实现数据变化更新UI时用到了动态收集依赖Dep，下面让尤大来给我们解释解释：
+
+**我**：什么是依赖Dep？<br>
+**尤大**：每个数据data的属性property都对应一个依赖Dep，Dep最终会与Watcher相互关联，当property变化时，Dep就会通知watcher执行回调函数。<br>
+**我**：那当数据变化时，触发的所有操作都在watcher的回调函数中吗？<br>
+**尤大**：是的，与传统的data与watcher硬绑定不同，vue在data与watcher之间插入了Dep层，是为了解耦data与watcher，可以随心所欲的修改data与watcher的关联，这种实现方式可以成为依赖的动态收集。<br>
+**我**：哦，原来Dep是用来解耦的，那Dep和Watcher是如何关联的？<br>
+**尤大**：上面我已经提到了data的每个属性property都对应一个Dep，当property被访问时（也就是调用它的getter方法），它的Dep就会添加到当前的watcher。<br>
+**我**：当前的watcher是什么意思？<br>
+**尤大**：表急，耐心听。每个watcher都有一个expOrFn，当expOrFn执行前会把该watcher保存在Dep.target上，这个Dep.target就是当前的watcher。当expOrFn执行时如果访问了某个data的属性property，这个property的Dep就会与Dep.target关联起来。<br>
+**我**：Dep.target是什么？<br>
+**尤大**：Dep.target是Dep的静态属性。<br>
+**我**：哦，好的，全明白了。<br>
+**尤大**：全明白了吗？你应该忘了问Observer了吧。<br>
+**我**：哦，是的，确实忘了，那Observer是什么？<br>
+**尤大**：Observer的作用就是为data的property设置setter和getter。<br>
 
 以下是精简后的代码，我把其他细节全部去掉了，只留下真正的核心代码。
 
