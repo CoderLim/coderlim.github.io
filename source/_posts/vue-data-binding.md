@@ -55,20 +55,22 @@ input.addEventListener('change', function() {
 
 我先来说说原理，接下来再上代码。尤大在实现数据变化更新UI时用到了动态收集依赖Dep，下面让尤大来给我们解释解释：
 
-**我**：什么是依赖Dep？<br>
-**尤大**：每个数据data的属性property都对应一个依赖Dep，Dep最终会与Watcher相互关联，当property变化时，Dep就会通知watcher执行回调函数。<br>
-**我**：那当数据变化时，触发的所有操作都在watcher的回调函数中吗？<br>
-**尤大**：是的，与传统的data与watcher硬绑定不同，vue在data与watcher之间插入了Dep层，是为了解耦data与watcher，可以随心所欲的修改data与watcher的关联，这种实现方式可以成为依赖的动态收集。<br>
-**我**：哦，原来Dep是用来解耦的，那Dep和Watcher是如何关联的？<br>
-**尤大**：上面我已经提到了data的每个属性property都对应一个Dep，当property被访问时（也就是调用它的getter方法），它的Dep就会添加到当前的watcher。<br>
-**我**：当前的watcher是什么意思？<br>
-**尤大**：表急，耐心听。每个watcher都有一个expOrFn，当expOrFn执行前会把该watcher保存在Dep.target上，这个Dep.target就是当前的watcher。当expOrFn执行时如果访问了某个data的属性property，这个property的Dep就会与Dep.target关联起来。<br>
-**我**：Dep.target是什么？<br>
-**尤大**：Dep.target是Dep的静态属性。<br>
-**我**：哦，好的，全明白了。<br>
-**尤大**：全明白了吗？你应该忘了问Observer了吧。<br>
-**我**：哦，是的，确实忘了，那Observer是什么？<br>
-**尤大**：Observer的作用就是为data的property设置setter和getter，并且定义Dep。<br>
+```
+我：什么是依赖Dep？
+尤大：每个数据data的属性property都对应一个依赖Dep，Dep最终会与Watcher相互关联，当property变化时，Dep就会通知watcher执行回调函数。
+我：那当数据变化时，触发的所有操作都在watcher的回调函数中吗？
+尤大：是的，与传统的data与watcher硬绑定不同，vue在data与watcher之间插入了Dep层，是为了解耦data与watcher，可以随心所欲的修改data与watcher的关联，这种实现方式可以成为依赖的动态收集。
+我：哦，原来Dep是用来解耦的，那Dep和Watcher是如何关联的？
+尤大：上面我已经提到了data的每个属性property都对应一个Dep，当property被访问时（也就是调用它的getter方法），它的Dep就会添加到当前的watcher。
+我：当前的watcher是什么意思？
+尤大：表急，耐心听。每个watcher都有一个expOrFn，当expOrFn执行前会把该watcher保存在Dep.target上，这个Dep.target就是当前的watcher。当expOrFn执行时如果访问了某个data的属性property，这个property的Dep就会与Dep.target关联起来。
+我：Dep.target是什么？
+尤大：Dep.target是Dep的静态属性。
+我：哦，好的，全明白了。
+尤大：全明白了吗？你应该忘了问Observer了吧。
+我：哦，是的，确实忘了，那Observer是什么？
+尤大：Observer的作用就是为data的property设置setter和getter，并且定义Dep。
+```
 
 以下是精简后的代码，我把其他细节全部去掉了，只留下真正的核心代码。
 
@@ -123,7 +125,7 @@ export function popTarget() {
 
 ### Watcher
 
-watcher负责收集dep，保存dep变化时(也就是data属性变化时)调的callback。
+当expOrFn执行时，收集dep，保存data属性变化时调的callback。
 
 ```js
 export default class Watcher {
