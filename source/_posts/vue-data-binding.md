@@ -68,7 +68,7 @@ input.addEventListener('change', function() {
 **我**：哦，好的，全明白了。<br>
 **尤大**：全明白了吗？你应该忘了问Observer了吧。<br>
 **我**：哦，是的，确实忘了，那Observer是什么？<br>
-**尤大**：Observer的作用就是为data的property设置setter和getter。<br>
+**尤大**：Observer的作用就是为data的property设置setter和getter，并且定义Dep。<br>
 
 以下是精简后的代码，我把其他细节全部去掉了，只留下真正的核心代码。
 
