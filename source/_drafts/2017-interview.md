@@ -144,11 +144,46 @@ vue的双向绑定其实就是setter＋onchange；而react的双向绑定是基�
 我：好的。
 
 细节可以参考[这里](http://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
+
 ```
 1. cookie总是被同源http请求携带，WebStorage不会；
 2. cookie可以设置过期时间和path，SessionStorage只在本次会话有效；
 3. cookie的大小是4k，WebStorage没这个限制；
 ```
+
+## SH
+
+### 委托、数组去重、死循环、正则、引用
+
+### 单页面开发时如何解决跨域
+
+### fastclick的原理
+
+### 手机端适配，如何定义100px的div
+
+### 如何实现1px线
+
+### jsonp
+
+### 中介者模式
+
+### 实现图标的几种方式
+
+### 什么是回流
+
+### 1张10k的图片比10张1k图片下载快
+
+### vue文件大小，适合什么业务
+
+### 实际项目案例
+
+### 跨域报错是浏览器端的还是服务器端
+
+### es与js的联系
+
+### 最近在看什么书
+
+### 数组合并
 
 ### 总结
 
