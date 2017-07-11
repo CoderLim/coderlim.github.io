@@ -15,11 +15,11 @@ tags:
 
 ## 前言 
 
-每次写文章都想在前面提提~~事实~~时事，今天想说的是：*******，如果你看到的是星号，那很抱歉，“福利”被和谐了，你可以更换浏览器试试。本文对setTimeout、setImmediate、process.nextTick的区别做了简单阐述，如有疑问，请留言。
+每次写文章都想在前面提提~~事实~~时事，今天想说的是：*******，如果你看到的是星号，那很抱歉，“福利”被和谐了，你可以更换浏览器试试。本文对setTimeout、setImmediate、process.nextTick的区别做了简单阐述，如有疑问，请留言。 
 
 ## api介绍
 
-1. **setTimeout(callback, delay)**：经过delay时间后只执行一次callback，但是并不能保证时间点的精确性。delay的意思是，告诉callback可以被执行了，如果callback所在队列前面还有任务没执行，那它也得稍等等。
+1. **setTimeout(callback, delay)**：经过delay时间后只执行一次callback，但是并不能保证时间点的精确性。delay的意思是，告诉callback可以被执行了，如果callback所在队列前面还有任务没执行，那它也得稍等等。 
 
 2. <div id="setImmediate">**setImmediate(callback)**：执行callback的时机是在IO事件回调之后，并且在setTimeout和setInterval创建的timer之前。</div>
 
@@ -91,13 +91,11 @@ setImmediate(function () {
   console.log('Immediate');
 });
 console.log('正常');
-// 结果：nextTick、Immediate、正常
+// 结果：正常、nextTick、Immediate
 ```
-这是由于事件循环不同观察者（观察者可以理解为一系列回调函数，每次事件循环都会去问观察者有没有回调函数）是有优先级的，
-优先级由高到低依次为：idle观察者、io观察者、check观察者。
+这是由于事件循环不同观察者（观察者可以理解为一系列回调函数，每次事件循环都会去问观察者有没有回调函数）是有优先级的，优先级由高到低依次为：idle观察者（nextTick）、io观察者、check观察者（setImmediate）。
 
-还有一点需要说明，刚刚上面提到了`process.nextTick`的回调保存在数组中，setImmediate的回调保存在链表中，
-process.nextTick在每次事件循环中会把数组中的所有回调执行，而setImmediate每次只执行一个，来看个例子：
+还有一点需要说明，刚刚上面提到了`process.nextTick`的回调保存在数组中，setImmediate的回调保存在链表中，process.nextTick在每次事件循环中会把数组中的所有回调执行，而setImmediate每次只执行一个，来看个例子：
 
 ```js
 process.nextTick(function () {
@@ -120,14 +118,11 @@ console.log('正常执行');
 // 结果：nextTick1、nextTick2、setImmediate1、强势进入、setImmedate2
 ```
 
-从执行结果可以看出，当第一个setImmediate执行完，并没有紧接着执行第二个，而是进入了下一次循环。这种设计是为了
-保证每轮循环能够快速执行结束，防止CPU占用过多而阻塞后续IO调用的情况。
+从执行结果可以看出，当第一个setImmediate执行完，并没有紧接着执行第二个，而是进入了下一次循环。这种设计是为了 保证每轮循环能够快速执行结束，防止CPU占用过多而阻塞后续IO调用的情况。
 
 ## 总结
 
-实际上setTimeout最初出现是在浏览器端，毕竟node是后来出现的。我有一个小建议，在浏览器端推荐使用setTimeout，
-而在node端使用process.nextTick、Immediate。还有一种[说法][1]提到了，setTimeout与Immediate不是同一队列，所以会出现不可预测的先后执行。
-有何不顺眼的地方欢迎指正。
+实际上setTimeout最初出现是在浏览器端，毕竟node是后来出现的。我有一个小建议，在浏览器端推荐使用setTimeout， 而在node端使用process.nextTick、Immediate。还有一种[说法][1]提到了，setTimeout与Immediate不是同一队列，所以会出现不可预测的先后执行。 有何不顺眼的地方欢迎指正。
 
 [1]:https://github.com/nodejs/node-v0.x-archive/issues/6034 "说到setTimeout与setImmediate不是同一队列"
 
