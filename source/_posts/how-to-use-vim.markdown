@@ -72,6 +72,8 @@ tags:
 说明ID索引文件没有生成，在你的macvim执行:Update(注意大小写)，会更新你的工程，
 看看里面是不是却少安装gawk，如果是，请参考[这里](http://macappstore.org/gawk/)
 
+如果提示'Can't find mkid in your system, Please install first'，参考这里：https://github.com/exvim/ex-gsearch#install-ex-utility
+
 ### 如何快速注释js
 
 1. 选中待注释的代码块（用鼠标或v）；
