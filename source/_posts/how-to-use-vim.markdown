@@ -48,7 +48,7 @@ tags:
 - **<<**: 左缩进
 - **>>**: 右缩进
 - **ctrl+6**: 两个文件切换,[go further](http://stackoverflow.com/questions/19971023/how-to-go-back-to-previous-opened-file-in-vim)
-- **\<c-r\>**: redo 
+- **ctrl+r**: redo 
 - **:bn**: 切换缓冲区（即编辑窗口） 
 - **:bp**: 切换缓冲区
 - **:bN**: 切换指定N缓存区
@@ -69,12 +69,12 @@ tags:
 - **:%!xxd:** 十六进制显示文件
 - **:%!xxd -r**: 正常显示文件
 - **wall/qall**: 保存/退出所有文件
-- **\<c-w-h/j/k/l\>**: 跳转到指定方向的子window
+- **ctrl+w+h/j/k/l**: 跳转到指定方向的子window
 
 ## exvim常用指令
 
-- **\<leader\>fc**: 在nerdtree中定位当前编辑的文件
-- **<\leader\>c\<space\>/\<leader\>cs**: 快速注释
+- **\\fc**: 在nerdtree中定位当前编辑的文件
+- **\\+c+空格/\\+cs**: 快速注释
 
 ## 常用功能
 
