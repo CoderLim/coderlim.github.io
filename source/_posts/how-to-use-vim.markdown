@@ -38,6 +38,7 @@ tags:
 - **替换**: :s/a/b将该行的第一个a替换成b，:s/a/b/g替换该行的所有a，:n,ms/a/b替换n行到m行，%s/a/b替换所有行的第一个a，%s/a/b/g替换所有a
 - **选中**: v20G，选中当前行到第20行；V20G，选中当千行到第20行；
 - **zc/zo**: 折叠/展开代码块
+- **zt/zz/zb**: 将光标位置置于屏幕顶端/中间/底端
 - **xp**: 交换相邻的两个字母；
 - **:9y**: 拷贝第9行，不必首先移动光标;
 - **ggvG**: 全选文件内容，不过我比较喜欢<ctrl + a>
@@ -47,16 +48,33 @@ tags:
 - **<<**: 左缩进
 - **>>**: 右缩进
 - **ctrl+6**: 两个文件切换,[go further](http://stackoverflow.com/questions/19971023/how-to-go-back-to-previous-opened-file-in-vim)
+- **<c-r>**: redo 
 - **:bn**: 切换缓冲区（即编辑窗口） 
 - **:bp**: 切换缓冲区
+- **:bN**: 切换指定N缓存区
+- **bd N**: 删除某个缓冲区 
 - **mx**: 添加（移除）x标签
 - **\`x**: 跳转到标签x
 - **:marks**: 查看所有标签
 - **delm x**: 删除标签x
 - **:ls**: 查看缓冲区
 - **:bN**: 打开缓冲区No
+- **:vertical sb N**: 纵向切割窗口，N代表缓冲区的编号
 - **qa q @a @@**: qa是录制，q是停止录制，@a执行录制，@@执行最近的录制，90@@执行90次
 - **:shell/:sh**: 执行shell命令
+- **vat/vit/vito**: 选择html标签, 其中vito是选中htm标签内容后，可以在开头进行增减的选择
+- **vaB/viB**: 选择花括号内容,B换成b，选择的是小括号的内容， 更多内容参考下面的指令
+- **:help visual-operators**: 查看高效指令
+- **vi -b datafile**: 编辑二进制文件
+- **:%!xxd:** 十六进制显示文件
+- **:%!xxd -r**: 正常显示文件
+- **wall/qall**: 保存/退出所有文件
+- **<c-w-h/j/k/l>**: 跳转到指定方向的子window
+
+## exvim常用指令
+
+- **<leader>fc**: 在nerdtree中定位当前编辑的文件
+- **<leader>c<space>/<leader>cs**: 快速注释
 
 ## 常用功能
 
