@@ -26,10 +26,11 @@ tags:
 
 [exvim中文](http://exvim.github.io/docs-zh/)这里面包含了exvim的安装与配置，以及插件的安装。
 
-## vim指令入门
+## vim教程
 
 [Vim入门教程](http://blog.jobbole.com/86132/)这篇文件是我**强烈推荐**的，入门必备，告诉你如何使用指令，
 如何**人类的语言**来使用指令。
+[很强的教程](http://derekwyatt.org/vim/)：英文版没字幕没看懂
 
 ## 高频组合指令
 
