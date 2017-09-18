@@ -38,6 +38,7 @@ tags:
 
 - **:e xx/xx/file.txt**: 编辑
 - **:find 1.txt**: 在当前path下查找1.txt，并打开，可以用set设置path，比如:set path=~/Desktop
+- **shift+asterisk**: 查找光标处关键字
 - **替换**: :s/a/b将该行的第一个a替换成b，:s/a/b/g替换该行的所有a，:n,ms/a/b替换n行到m行，%s/a/b替换所有行的第一个a，%s/a/b/g替换所有a
 - **选中**: v20G，选中当前行到第20行；V20G，选中当千行到第20行；
 - **zc/zo**: 折叠/展开代码块
