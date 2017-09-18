@@ -114,6 +114,10 @@ tags:
 1. 自动闭合[], {}：https://github.com/jiangmiao/auto-pairs
 2. 自动闭合html标签（<C+_>）：http://vim.sourceforge.net/scripts/script.php?script_id=13
 
+## 问题
+
+1. mac下的y指令不能将内容copy到clipboard：https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
+
 ## 参考
 [exvim中文](http://exvim.github.io/docs-zh/)<br/>
 [Vim入门教程](http://blog.jobbole.com/86132/)<br/>
