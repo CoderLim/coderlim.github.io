@@ -114,6 +114,26 @@ tags:
 1. 自动闭合[], {}：https://github.com/jiangmiao/auto-pairs
 2. 自动闭合html标签（<C+_>）：http://vim.sourceforge.net/scripts/script.php?script_id=13
 
+## 关于配置
+
+```bash
+" .vimrc
+ autocmd vimenter * NERDTree
+ "显示行号
+ let NERDTreeShowLineNumbers=1
+ let NERDTreeAutoCenter=1
+ " 是否显示隐藏文件
+ let NERDTreeShowHidden=1
+ " 设置宽度
+ let NERDTreeWinSize=31
+ " 在终端启动vim时，共享NERDTree
+ let g:nerdtree_tabs_open_on_console_startup=1
+ " 忽略一下文件的显示
+ let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+ " 显示书签列表
+ let NERDTreeShowBookmarks=1
+```
+
 ## 问题
 
 1. mac下的y指令不能将内容copy到clipboard：https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
