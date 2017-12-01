@@ -19,6 +19,21 @@ tags:
 
 > 这里我把视觉模型谈谈，还没写完，从最重要的有价值的章节（我管它叫做MVS，如果喜欢篮球应该对MVP很了解吧）开始写的，后续还会写，不要因为里面有的只有标题就冲我扔臭鞋。
 
+## 8.3.1 <a href="https://www.w3.org/TR/CSS21/box.html#collapsing-margins">margin塌陷</a>
+
+1. 浮动元素与其他盒子都不会塌陷(甚至与它的流内孩子也不会)；
+2. <a href="#establish-bfc">形成新BFC</a>的盒子与它流内孩子不会塌陷;
+3. 绝对定位盒子的margin不会塌陷(甚至与他的流内孩子也不会)；
+4. inline-block的margin不会塌陷；
+5. 流内块级元素的bottom margin总是会与它相邻的兄弟流内块级元素的top margin塌陷，除非这个兄弟清除了浮动；
+6. 流内块级元素的top margin与它的第一个流内块级孩子的top margin发生塌陷，前提是这个元素没有上边框，上padding，并且孩子没有清除浮动；
+7. ***height***是auto，***min-height***是0的流内块级盒子的bottom margin与它的最后一个流内块级孩子的bottom margin会塌陷，如果这个盒子没有下边框，下padding，并且孩子的bottom margin没与清除浮动的top margin发生塌陷；
+8. 如果一个盒子的**min-height**是0，并且没有竖直方向上的padding和border，并且它的**height**是auto或者0，并且它不包含line box，并且所有它流内孩子的margin都塌陷，那么它自己的margin会塌陷；
+
+我只想说，最后一条太绕了，为了防止误导，我还是把原文贴出来吧：A box's own margins collapse if the 'min-height' property is zero, and it has neither top or bottom borders nor top or bottom padding, and it has a 'height' of either 0 or 'auto', and it does not contain a line box, and all of its in-flow children's margins (if any) collapse
+
+上面几条规则中有**清除浮动**可以防止塌陷，我试了试貌似不行，是不是我对原文理解有偏差？
+
 ## 9.1 可视化格式化模型(Visual Formatting Model)
 
 这章和接下来描述了可视化格式化模型（VFM）：用户代理如何在[可视媒体](https://www.w3.org/TR/CSS2/media.html)上处理[文档树](https://www.w3.org/TR/CSS2/conform.html#doctree).
@@ -115,9 +130,10 @@ p元素包含一个匿名文本C1，块级元素，另一个匿名文本C2.
 
 ### 9.4.1 块格式化上下文(BFC)
 
-浮动、绝对定位元素，不是块盒子的块容器（比如inline-blocks、table-cells和table-captions)和overflow不是visible的块盒子（except when that value has been propagated to the viewport)都会为内容创建一个BFC。在BFC中，盒子是从BFC的顶部开始，竖直方向，一个一个放置的。两个兄弟盒子的竖直间距是有margin决定的。同一BFC中相邻块级盒子的竖直margin会发生[折叠](https://www.w3.org/TR/CSS2/box.html#collapsing-margins)。
+<a name="establish-bfc"></a>
+***浮动、绝对定位元素，不是块盒子的块容器（比如inline-blocks、table-cells和table-captions)和overflow不是visible的块盒子（except when that value has been propagated to the viewport)都会为内容创建一个BFC***。在BFC中，盒子是从BFC的顶部开始，竖直方向，一个一个放置的。两个兄弟盒子的竖直间距是有margin决定的。同一BFC中相邻块级盒子的竖直margin会发生[折叠](https://www.w3.org/TR/CSS2/box.html#collapsing-margins)。
 
-在BFC中，每个盒子的左外边接触包含块的左边（对于从右到左的格式化，接触右边）。这个是正确的即使是对于float的展现（尽管一个盒子的杭盒子可能由于浮动而皱缩），除非盒子创建一个新的BFC（在这种情况下，盒子自身可能会因为浮动[变得更狭窄](https://www.w3.org/TR/CSS2/visuren.html#bfc-next-to-float)）。
+在BFC中，每个盒子的左外边接触包含块的左边（对于从右到左的格式化，接触右边）。这个是正确的即使是对于float的展现（尽管一个盒子的行盒子可能由于浮动而皱缩），除非盒子创建一个新的BFC（在这种情况下，盒子自身可能会因为浮动[变得更狭窄](https://www.w3.org/TR/CSS2/visuren.html#bfc-next-to-float)）。
 
 ### 9.4.2 行内格式化上下文(IFC)
 
@@ -172,7 +188,7 @@ others | same as specified
 
 ### 9.9.1 指定栈级别：z-index属性
 
-**z-index**
+**z-index**: 只对非static元素有效，所以如果只浮动也不行
 
 - Value: auto 或 \<integer\> 或 inherit
 - initial: auto

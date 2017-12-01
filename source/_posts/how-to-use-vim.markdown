@@ -30,6 +30,7 @@ tags:
 
 [Vim入门教程](http://blog.jobbole.com/86132/)这篇文件是我**强烈推荐**的，入门必备，告诉你如何使用指令，
 如何**人类的语言**来使用指令。
+[更全面的认识vim](http://yyq123.github.io/learn-vim/learn-vi-00-List.html): 比如什么是寄存器等
 [很强的教程](http://derekwyatt.org/vim/)：英文版没字幕没看懂
 
 ## 高频组合指令
