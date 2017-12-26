@@ -138,6 +138,7 @@ tags:
 ## 问题
 
 1. mac下的y指令不能将内容copy到clipboard：https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
+2. vim保存文件后webpack不自动编译：`:set noswapfile`，禁用swap文件还是可行的
 
 ## 参考
 [exvim中文](http://exvim.github.io/docs-zh/)<br/>
