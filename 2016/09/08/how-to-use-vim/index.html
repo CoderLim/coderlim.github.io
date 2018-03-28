@@ -93,7 +93,7 @@
 <meta property="og:description" content="vim小巧灵活，，用了有一段时间了，插件丰富，快捷键很多，很好用的编辑器，极力推荐，只有一点不好，就是在mac上的exvim输入中文时经常会卡，就像鱼刺卡在喉咙一样，难受！当然没有完美的编辑器，vim相对来说学习曲线比较陡，所以如果嫌麻烦 推荐使用VSCode和Sublime。">
 <meta property="og:image" content="http://gengliming.com/assets/images/2016/how-to-use-vim-my-vim.png">
 <meta property="og:image" content="http://gengliming.com/assets/images/2016/how-to-use-vim1.png">
-<meta property="og:updated_time" content="2017-12-01T05:10:55.000Z">
+<meta property="og:updated_time" content="2017-12-26T03:00:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="总结vim的使用方法">
 <meta name="twitter:description" content="vim小巧灵活，，用了有一段时间了，插件丰富，快捷键很多，很好用的编辑器，极力推荐，只有一点不好，就是在mac上的exvim输入中文时经常会卡，就像鱼刺卡在喉咙一样，难受！当然没有完美的编辑器，vim相对来说学习曲线比较陡，所以如果嫌麻烦 推荐使用VSCode和Sublime。">
@@ -478,6 +478,7 @@
 <h2 id="关于配置"><a href="#关于配置" class="headerlink" title="关于配置"></a>关于配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="string">" .vimrc</span></div><div class="line"> autocmd vimenter * NERDTree</div><div class="line"> "显示行号</div><div class="line"> <span class="built_in">let</span> NERDTreeShowLineNumbers=1</div><div class="line"> <span class="built_in">let</span> NERDTreeAutoCenter=1</div><div class="line"> <span class="string">" 是否显示隐藏文件</span></div><div class="line"> let NERDTreeShowHidden=1</div><div class="line"> " 设置宽度</div><div class="line"> <span class="built_in">let</span> NERDTreeW<span class="keyword">in</span>Size=31</div><div class="line"> <span class="string">" 在终端启动vim时，共享NERDTree</span></div><div class="line"> let g:nerdtree_tabs_open_on_console_startup=1</div><div class="line"> " 忽略一下文件的显示</div><div class="line"> <span class="built_in">let</span> NERDTreeIgnore=[<span class="string">'\.pyc'</span>,<span class="string">'\~$'</span>,<span class="string">'\.swp'</span>]</div><div class="line"> <span class="string">" 显示书签列表</span></div><div class="line"> let NERDTreeShowBookmarks=1</div></pre></td></tr></table></figure>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
 <li>mac下的y指令不能将内容copy到clipboard：<a href="https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim" target="_blank" rel="external">https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim</a></li>
+<li>vim保存文件后webpack不自动编译：<code>:set noswapfile</code>，禁用swap文件还是可行的</li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://exvim.github.io/docs-zh/" target="_blank" rel="external">exvim中文</a><br><br><a href="http://blog.jobbole.com/86132/" target="_blank" rel="external">Vim入门教程</a><br><br><a href="https://www.smashingmagazine.com/2009/11/zen-coding-a-new-way-to-write-html-code/" target="_blank" rel="external">Zen Coding: A Speedy Way To Write HTML/CSS Code</a><br><br><a href="https://www.qianduan.net/zen-coding-a-new-way-to-write-html-code/" target="_blank" rel="external">Zen Coding: 一种快速编写HTML/CSS代码的方法</a><br></p>
 
@@ -620,7 +621,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -696,7 +697,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
