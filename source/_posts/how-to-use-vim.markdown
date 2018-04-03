@@ -37,16 +37,11 @@ tags:
 
 单指令是必须记住的，这里提几个组合指令。<br/>
 
-- **:e xx/xx/file.txt**: 编辑
-- **:find 1.txt**: 在当前path下查找1.txt，并打开，可以用set设置path，比如:set path=~/Desktop
 - **shift+asterisk**: 查找光标处关键字
 - **替换**: :s/a/b将该行的第一个a替换成b，:s/a/b/g替换该行的所有a，:n,ms/a/b替换n行到m行，%s/a/b替换所有行的第一个a，%s/a/b/g替换所有a
 - **选中**: v20G，选中当前行到第20行；V20G，选中当千行到第20行；
-- **zc/zo**: 折叠/展开代码块
-- **zt/zz/zb**: 将光标位置置于屏幕顶端/中间/底端
 - **xp**: 交换相邻的两个字母；
 - **:9y**: 拷贝第9行，不必首先移动光标;
-- **ggvG**: 全选文件内容，不过我比较喜欢<ctrl + a>
 - **gg=G**: 格式化文件
 - **ciw**: 修改光标所在单词
 - **vip**: 选取当前光标所在段落
@@ -54,27 +49,33 @@ tags:
 - **>>**: 右缩进
 - **ctrl+6**: 两个文件切换,[go further](http://stackoverflow.com/questions/19971023/how-to-go-back-to-previous-opened-file-in-vim)
 - **ctrl+r**: redo 
+- **wall/qall**: 保存/退出所有文件
+
+- **:ls**: 查看缓冲区
+- **:vertical sb N**: 纵向切割窗口，N代表缓冲区的编号
 - **:bn**: 切换缓冲区（即编辑窗口） 
 - **:bp**: 切换缓冲区
 - **:bN**: 切换指定N缓存区
 - **bd N**: 删除某个缓冲区 
+
 - **mx**: 添加（移除）x标签
 - **\`x**: 跳转到标签x
 - **:marks**: 查看所有标签
 - **delm x**: 删除标签x
-- **:ls**: 查看缓冲区
-- **:bN**: 打开缓冲区No
-- **:vertical sb N**: 纵向切割窗口，N代表缓冲区的编号
 - **qa q @a @@**: qa是录制，q是停止录制，@a执行录制，@@执行最近的录制，90@@执行90次
-- **:shell/:sh**: 执行shell命令
+- **:shell/:sh**: 执行shell命令, exit返回编辑窗口
+
+- **ggvG**: 全选文件内容，不过我比较喜欢<ctrl + a>
 - **vat/vit/vito**: 选择html标签, 其中vito是选中htm标签内容后，可以在开头进行增减的选择
 - **vaB/viB**: 选择花括号内容,B换成b，选择的是小括号的内容， 更多内容参考下面的指令
+
 - **:help visual-operators**: 查看高效指令
 - **vi -b datafile**: 编辑二进制文件
 - **:%!xxd:** 十六进制显示文件
 - **:%!xxd -r**: 正常显示文件
-- **wall/qall**: 保存/退出所有文件
 - **ctrl+w+h/j/k/l**: 跳转到指定方向的子window
+- **zc/zo**: 折叠/展开代码块
+- **zt/zz/zb**: 将光标位置置于屏幕顶端/中间/底端
 
 ## exvim常用指令
 
@@ -110,12 +111,26 @@ tags:
 有一点要说明，就是插件装完了输入html:5然后按快捷键 <Ctrl+y+,>居然不展开，最后发现需要把当前文件先保存成html格式才行，
 估计是这个插件对当前文件类型有检查。
 
+```
+// 此快捷键是快速生成html代码：<c-y>,
+// 以下内容都要配合这个快捷键
+
+// html5基础结构
+html:5
+
+// 生成带class的div
+div.classname
+
+// 复杂html, 自己体会吧
+div>p#foo$*3>a
+```
+
 ## 其他插件
 
 1. 自动闭合[], {}：https://github.com/jiangmiao/auto-pairs
 2. 自动闭合html标签（<C+_>）：http://vim.sourceforge.net/scripts/script.php?script_id=13
 
-## 关于配置
+## 最简化的配置
 
 ```bash
 " .vimrc
@@ -135,10 +150,36 @@ tags:
  let NERDTreeShowBookmarks=1
 ```
 
-## 问题
+## vim问题
 
 1. mac下的y指令不能将内容copy到clipboard：https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
 2. vim保存文件后webpack不自动编译：`:set noswapfile`，禁用swap文件还是可行的
+
+## tmux
+
+用到了vim就不得不提tmux了，多窗口管理工具，很强大
+
+```
+创建:
+    1. tmux new -s session-name
+    2. prefix + :，然后输入：new -s session-name
+
+    s 列出会话
+    d 删除会话
+    $重命名
+
+pane:
+   “/% 垂直水平拆分
+    z 放大
+    o 下一个
+    q 查看所有
+    x 关掉
+
+window:
+    c 新建
+    <num> 窗口好
+    & 关闭
+```
 
 ## 参考
 [exvim中文](http://exvim.github.io/docs-zh/)<br/>
