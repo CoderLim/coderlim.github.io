@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/09/08/how-to-use-vim/</loc>
+    <lastmod>2018-04-03T05:18:37.524Z</lastmod>
+    <data>
+        <display>
+        <title>总结vim的使用方法</title>
+        <pubTime>2016-09-08T02:17:00.000Z</pubTime>
+        
+        <tag>exvim</tag>
+         
+        <tag>vim</tag>
+         
+        <tag>总结</tag>
+         
+         
+           
+             
+              <breadCrumb title="其它" url="http://gengliming.com/categories/%E5%85%B6%E5%AE%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/11/25/setTimeout-setImmediate-nextTick/</loc>
+    <lastmod>2018-03-28T09:31:45.046Z</lastmod>
+    <data>
+        <display>
+        <title>setTimeout setImmediate nextTick</title>
+        <pubTime>2016-11-25T05:10:00.000Z</pubTime>
+        
+        <tag>node</tag>
+         
+        <tag>setImmediate</tag>
+         
+        <tag>setTimeout</tag>
+         
+        <tag>nextTick</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2014/09/02/css2.1-visual-formatting-model/</loc>
+    <lastmod>2017-11-09T06:54:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>CSS视觉格式化模型</title>
+        <pubTime>2014-09-02T04:30:00.000Z</pubTime>
+        
+        <tag>css</tag>
+         
+        <tag>front-end</tag>
+         
+        <tag>VFM</tag>
+         
+        <tag>css2.1</tag>
+         
+        <tag>BFC</tag>
+         
+        <tag>IFC</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="CSS" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/02/23/difference-between-ES5-and-ES6-in-reactive/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>React/ReactNative中ES5和ES6语法的区别</title>
+        <pubTime>2016-02-23T04:50:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>ES5</tag>
+         
+        <tag>ES6</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/12/23/an-insight-into-table-cell-of-display/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解table-cell</title>
+        <pubTime>2016-12-23T14:10:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>table-cell</tag>
+         
+        <tag>display</tag>
+         
+        <tag>css</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="CSS" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2017/03/16/front-end-quiz-markdown/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>前端测试题</title>
+        <pubTime>2017-03-16T07:48:56.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>测试</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="测试" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8B%E8%AF%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/10/01/frontend-optimazation/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>前端性能优化</title>
+        <pubTime>2015-10-01T07:32:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>性能优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2017/02/17/how-to-configure-webpack-with-es6-reactjs/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>webpack之es6和react.js</title>
+        <pubTime>2017-02-17T04:27:59.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>webpack</tag>
+         
+        <tag>es6</tag>
+         
+        <tag>react</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="webpack" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/webpack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/03/02/front-end-compatibility-issues/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>常见兼容性问题</title>
+        <pubTime>2015-03-02T05:10:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>兼容性</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="CSS" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/07/06/how-to-implement-addEvent/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何正确实现addEvent</title>
+        <pubTime>2015-07-06T07:32:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/01/13/how-to-learn-react-native/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>react-native入门</title>
+        <pubTime>2016-01-13T15:32:54.000Z</pubTime>
+        
+        <tag>react-native</tag>
+         
+        <tag>入门</tag>
+         
+         
+           
+             
+              <breadCrumb title="ReactNative" url="http://gengliming.com/categories/ReactNative/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/08/01/regex-some-important-concept/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>正则表达式 ?:，?=，?!</title>
+        <pubTime>2015-08-01T02:12:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>正则表达式</tag>
+         
+        <tag>regex</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/08/16/react-native-redux/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何在ReactNative中使用redux</title>
+        <pubTime>2016-08-16T12:54:00.000Z</pubTime>
+        
+        <tag>react-native</tag>
+         
+        <tag>ReactNative</tag>
+         
+        <tag>redux</tag>
+         
+         
+           
+             
+              <breadCrumb title="ReactNative" url="http://gengliming.com/categories/ReactNative/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2014/07/13/javascript-class-creation-inheritage/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>javascript 类的创建与继承</title>
+        <pubTime>2014-07-13T04:30:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>ES5</tag>
+         
+        <tag>OO</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2017/02/16/bridging-css-and-js-with-custom-properties/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用自定义属性桥接css和javascript(翻译)</title>
+        <pubTime>2017-02-16T01:46:10.000Z</pubTime>
+        
+        <tag>css</tag>
+         
+        <tag>custom-properties</tag>
+         
+        <tag>js</tag>
+         
+        <tag>abstraction</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="CSS" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
+          
+             
+              <breadCrumb title="翻译" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/CSS/%E7%BF%BB%E8%AF%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/07/01/make-personal-blog-via-jekyll/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>基于jekyll＋github-pages的个人博客</title>
+        <pubTime>2016-07-01T13:00:00.000Z</pubTime>
+        
+        <tag>personal-blog</tag>
+         
+        <tag>jekyll</tag>
+         
+        <tag>个人博客</tag>
+         
+        <tag>github-pages</tag>
+         
+         
+           
+             
+              <breadCrumb title="其它" url="http://gengliming.com/categories/%E5%85%B6%E5%AE%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/06/05/some-funny-js-functions/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>几个有趣的javascript函数</title>
+        <pubTime>2015-06-05T06:02:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>前端;</tag>
+         
+        <tag>throttle</tag>
+         
+        <tag>bounce</tag>
+         
+        <tag>tco</tag>
+         
+        <tag>asyncify</tag>
+         
+        <tag>尾递归优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/11/09/css3-timing-function-steps/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>animation-timing-function 之 steps()</title>
+        <pubTime>2016-11-09T12:30:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>CSS</tag>
+         
+        <tag>step-start</tag>
+         
+        <tag>step-end</tag>
+         
+        <tag>timing-function</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="CSS" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2017/02/12/some-implements-of-lazyman/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>lazyman的两种实现方式</title>
+        <pubTime>2017-02-12T00:58:03.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>lazyman</tag>
+         
+        <tag>promise</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2017/02/09/the-importance-of-section/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>Section的重要性</title>
+        <pubTime>2017-02-08T22:09:16.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>H5</tag>
+         
+        <tag>HTML</tag>
+         
+        <tag>语义化</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="HTML" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/08/12/two-implements-of-js-deep-copy/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>两种javascript深拷贝的方法</title>
+        <pubTime>2015-08-12T09:21:16.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>deepCopy</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2017/03/07/vue-data-binding/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>聊聊Vue的数据绑定</title>
+        <pubTime>2017-03-07T02:14:46.000Z</pubTime>
+        
+        <tag>vue</tag>
+         
+        <tag>数据绑定</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="vue" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2016/01/01/webpack-getting-started-tutorial/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>webpack入门教程</title>
+        <pubTime>2016-01-01T06:20:08.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>webpack</tag>
+         
+        <tag>入门</tag>
+         
+         
+           
+             
+              <breadCrumb title="其它" url="http://gengliming.com/categories/%E5%85%B6%E5%AE%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://gengliming.com/2015/08/09/what-is-this-in-javascript/</loc>
+    <lastmod>2017-08-21T09:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>深入了解this</title>
+        <pubTime>2015-08-09T01:30:23.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>this</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+             
+              <breadCrumb title="javascript" url="http://gengliming.com/categories/%E5%89%8D%E7%AB%AF/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+</urlset>
